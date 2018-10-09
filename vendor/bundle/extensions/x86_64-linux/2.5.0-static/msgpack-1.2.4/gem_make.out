@@ -1,0 +1,42 @@
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/msgpack-1.2.4/ext/msgpack
+/home/cornelis/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20181008-9065-16795us.rb extconf.rb
+checking for ruby/st.h... yes
+checking for st.h... yes
+checking for rb_str_replace() in ruby.h... yes
+checking for rb_intern_str() in ruby.h... yes
+checking for rb_sym2str() in ruby.h... yes
+checking for rb_str_intern() in ruby.h... yes
+checking for rb_block_lambda() in ruby.h... yes
+checking for rb_hash_dup() in ruby.h... yes
+checking for rb_hash_clear() in ruby.h... yes
+creating Makefile
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR=" clean
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR="
+compiling buffer.c
+compiling buffer_class.c
+compiling extension_value_class.c
+compiling factory_class.c
+compiling packer.c
+compiling packer_class.c
+compiling packer_ext_registry.c
+compiling rbinit.c
+compiling rmem.c
+compiling unpacker.c
+compiling unpacker_class.c
+unpacker_class.c:219:14: warning: ‘Unpacker_peek_next_type’ defined but not used [-Wunused-function]
+ static VALUE Unpacker_peek_next_type(VALUE self)
+              ^
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-tautological-compare’
+compiling unpacker_ext_registry.c
+linking shared-object msgpack/msgpack.so
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 msgpack.so ./.gem.20181008-9065-13zjw8n/msgpack

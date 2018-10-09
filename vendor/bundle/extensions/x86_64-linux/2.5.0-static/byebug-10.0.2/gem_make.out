@@ -1,0 +1,19 @@
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/home/cornelis/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20181008-9065-1fz9s2o.rb extconf.rb
+creating Makefile
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20181008-9065-c6pfwz/byebug

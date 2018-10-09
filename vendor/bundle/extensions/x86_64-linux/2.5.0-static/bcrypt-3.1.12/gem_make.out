@@ -1,0 +1,19 @@
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+/home/cornelis/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20181008-9065-s7kd7k.rb extconf.rb
+creating Makefile
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.so
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20181008-9065-131ggpo

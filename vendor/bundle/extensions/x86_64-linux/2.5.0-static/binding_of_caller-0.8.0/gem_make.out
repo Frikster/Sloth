@@ -1,0 +1,16 @@
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/home/cornelis/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20181008-9065-zv4tw2.rb extconf.rb
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target 'clean'.  Stop.
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /media/cornelis/Storage/Home/Documents/Academic/AppAcademy/Projects/W8D1/AppAcademy_W7D5/sloth/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.
