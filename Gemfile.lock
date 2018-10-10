@@ -211,7 +211,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  bcrypt
+  bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
@@ -238,4 +238,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
