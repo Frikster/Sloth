@@ -1,0 +1,45 @@
+.splash {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.splash-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.splash-logo img {
+  height: 30px;
+}
+
+.splash nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.splash-signup, .splash-login {
+    border: 2px solid lightgray;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.splash-signup:hover, .splash-login:hover {
+    border: 2px solid gray;
+}
+
+.splash-app-links {
+  display: flex;
+  align-items: center;
+}
+
+.splash-main {
+  display: flex;
+}
+
+.splash-main img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
