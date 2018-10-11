@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Splash from './splash';
-import {logout} from '../../actions/session_actions';
+import {logout, login} from '../../actions/session_actions';
 
 const msp = (state) => {
   return {
@@ -10,7 +10,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
-    logout: () => logout()(dispatch)
+    logout: () => dispatch(logout()),
+    demo: () => dispatch(login({email: 'andyiscoming@example.com', password: '123456'}))
   };
 };
 

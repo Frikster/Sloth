@@ -1,32 +1,77 @@
 .splash {
-  margin-left: 15%;
-  margin-right: 15%;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
 .splash-logo {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 40px;
 }
 
 .splash-logo img {
   height: 30px;
+  padding: 7.5px;
+}
+
+.splash-logo h2 {
+  color: #2c2d30;
+  text-shadow: 1px 1px #636365;
+}
+
+.splash-nav-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.splash-nav-left a:not(:first-child) {
+  padding: 15px;
+  font-size: 17px;
+  color: gray;
+}
+
+.splash-nav-left a:not(:first-child):hover {
+  color: black;
+  font-weight: bold;
+}
+
+.splash nav:last-child {
+  margin-right: 10px;
 }
 
 .splash nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 90px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
-.splash-signup, .splash-login {
-    border: 2px solid lightgray;
-    padding: 10px;
-    border-radius: 5px;
+.splash-login {
+  color: gray;
+  padding: 10px;
+  margin-right: 33px;
+  border-radius: 5px;
 }
 
-.splash-signup:hover, .splash-login:hover {
-    border: 2px solid gray;
+.splash-signup {
+  color: white;
+  padding: 12px;
+  background-color: #3f46ad;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.splash-login:hover {
+    color: #3f46ad;
+}
+
+.splash-signup:hover {
+  background-color: darkblue;
 }
 
 .splash-app-links {
@@ -35,11 +80,65 @@
 }
 
 .splash-main {
+  position: relative;
   display: flex;
 }
 
 .splash-main img {
+  /* flex: 1;
+  flex-shrink: 1; */
+  position: relative;
+  left: -75px;
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+.splash-right-info {
+  /* flex: 1;
+  flex-shrink: 1; */
+}
+
+.splash-right-info h1 {
+  font-size: 75px;
+  margin: 0;
+}
+
+.splash-right-info p:first-of-type {
+  color: gray;
+  font-size: 20px;
+  line-height: 1.5;
+  padding-bottom: 33px;
+}
+
+.splash-bottom-btns {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.splash-bottom-btns * {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.splash-bottom-btns *:first-child {
+  background-color: #008952;
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+  border: none;
+}
+
+.splash-bottom-btns *:last-child {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 10px;
+}
+
+.splash-demo-login:hover {
+  cursor: pointer;
 }

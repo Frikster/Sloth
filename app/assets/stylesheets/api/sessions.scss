@@ -1,3 +1,176 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.session-form-page {
+  background-color: #f9f9f9;
+}
+
+.session-form-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.session-form-logo img {
+  height: 30px;
+  padding: 7.5px;
+}
+
+.session-form-logo h2 {
+  color: #2c2d30;
+  text-shadow: 1px 1px #636365;
+}
+
+.session-form-page nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  height: 60px;
+}
+
+.session-form-nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.session-form-nav-links * {
+  padding: 7.5px;
+  margin: 7.5px;
+  font-size: 15px;
+  color: gray;
+  font-weight: bold;
+}
+
+.session-form-nav-links *:not(:last-child):hover {
+  background-color: lightgray;
+  border-radius: 0.25rem;
+ }
+
+.session-form-login {
+  border: 2px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.session-form-login:hover {
+    border: 2px solid #636365;
+    color: #636365;
+}
+
+.session-form-nav-links:last-child {
+  padding-right:10px;
+}
+
+.session-form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 1px solid lightgray;
+  box-shadow: 0 1px gray;
+  margin: 0 auto;
+  max-width: 600px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-left: 35px;
+  padding-right: 18px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.session-form-box > * {
+  padding: 7.5px;
+  max-width: 375px;
+}
+
+.session-form-header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.session-form-title {
+  margin: 0 auto;
+}
+
+.session-form-workspace {
+  margin-bottom: 0;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.session-form input{
+  font-size: 20px;
+  margin-bottom: 7.5px;
+  padding: 13.5px;
+  border-radius: 0.25rem;
+  border: 1px solid gray;
+}
+
+.session-form label {
+  margin-bottom: 15px;
+}
+
+input[type='submit'] {
+  background-color: #008952;
+  color: white;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  font-weight: bold;
+}
+
+input[type='submit']:hover {
+  cursor: pointer;
+}
+
+.session-form-demo-login{
+  font-size: 15px;
+  margin-bottom: 7.5px;
+  padding: 13.5px;
+  border-radius: 0.25rem;
+  background-color: #3f46ad;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border: none;
+}
+
+.session-form-demo-login:hover {
+  cursor: pointer;
+  background-color: darkblue;
+}
+
+
+.session-form-bottom-links * {
+  margin: 0;
+}
+
+.session-form-bottom-links p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.session-form-bottom-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.session-form-bottom-links *:hover {
+  text-decoration: underline;
+}
+
+.session-form-link-to-other-form {
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.session-form-error-messages {
+  color: red;
+}

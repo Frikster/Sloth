@@ -3,6 +3,7 @@ import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import SplashContainer from './splash/splash_container';
+import ChannelContainer from './channel/channel_container';
 import {
   Route,
   Redirect,
@@ -10,14 +11,16 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import {AuthRoute} from '../util/route_util';
+import {AuthRoute, ProtectedRoute} from '../util/route_util';
 // import { Provider } from 'react-redux';
 
 const App = () => (
+  // Still have to make protected routes
   <div>
+    <Route exact path='/' component={SplashContainer} />
     <AuthRoute path='/login' component={LoginFormContainer} />
     <AuthRoute path='/signup' component={SignupFormContainer} />
-    <AuthRoute path='/' component={SplashContainer} />
+    <ProtectedRoute path='/channels' component={ChannelContainer} />
   </div>
 );
 

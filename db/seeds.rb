@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+general = Channel.create(name: 'General', direct_message_channel: false)
+general.save
+andy = User.create(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456')
+andy.save
