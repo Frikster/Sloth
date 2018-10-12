@@ -9,3 +9,5 @@ general = Channel.create(name: 'General', direct_message_channel: false)
 general.save
 andy = User.create(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456')
 andy.save
+example = User.create(email: 'you@example.com', password: '123456')
+example.save

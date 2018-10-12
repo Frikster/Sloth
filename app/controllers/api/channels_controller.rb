@@ -1,7 +1,6 @@
-class ChannelsController < ApplicationController
+class Api::ChannelsController < ApplicationController
   def index
     @channels = Channel.all
-    debugger
     render :index
   end
 
@@ -11,11 +10,12 @@ class ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     @channel.author_id = current_user.id
+    @user = current_user
     if @channel.save
       #TODO: populate list with channel, maintaining alphabetical border
       render "api/channels/show"
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @channel.errors.full_messages, status: 422
     end
   end
 

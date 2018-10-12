@@ -11,7 +11,7 @@
 #
 
 class Channel < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :direct_message_channel, inclusion: { in: [true, false]}
 
   belongs_to :user,

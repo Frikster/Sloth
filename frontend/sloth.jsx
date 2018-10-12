@@ -17,8 +17,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-// import {fetchChannels} from './actions/channel_actions';
-import {fetchChannels} from './util/channel_api_util';
+import {fetchChannels, createChannel} from './actions/channel_actions';
+
+// import {fetchChannels} from './util/channel_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchChannels = fetchChannels;
+  window.createChannel = createChannel;
   window.dispatch = store.dispatch;
   // window.login = login;
   // window.logout = logout;
