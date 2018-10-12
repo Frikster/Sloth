@@ -18,15 +18,19 @@ export const receiveErrors = (errors) => ({
 });
 
 export const login = (user) => (dispatch) => {
-  sessionAPI.login(user).then(res => dispatch(receiveCurrentUser(res)),
+  return sessionAPI.login(user).then(res => dispatch(receiveCurrentUser(res)),
   err => dispatch(receiveErrors(err.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {
-  sessionAPI.logout().then(res => dispatch(logoutCurrentUser()));
+  return sessionAPI.logout().then(res => dispatch(logoutCurrentUser()));
 };
 
 export const signup = (user) => (dispatch) => {
-  sessionAPI.signup(user).then(res => dispatch(receiveCurrentUser(res)),
+  return sessionAPI.signup(user).then(res => dispatch(receiveCurrentUser(res)),
   err => dispatch(receiveErrors(err.responseJSON)));
+};
+
+export const updateErrors = (errors) => (dispatch) => {
+  return dispatch(receiveErrors(errors));
 };

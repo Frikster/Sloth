@@ -3,10 +3,14 @@ import { Link, withRouter } from 'react-router-dom';
 
 class Splash extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+  }
+
   handleDemoLogin(e) {
     e.preventDefault();
     this.props.demo().then(() => {
-      console.log('I AM HERE');
       return this.props.history.push('/channels');
     });
   }
@@ -37,7 +41,7 @@ class Splash extends React.Component {
             <h1>Where Work Happens</h1>
             <p>When your team needs to kick off a project, hire a new employee, deploy some code, review a sales contract, finalize next year's budget, measure an A/B test, plan your next office opening, and more, Slack has you covered.</p>
             <span className='splash-bottom-btns'>
-              <button className='splash-demo-login' onClick={this.props.demo}>DEMO LOGIN</button>
+              <button className='splash-demo-login' onClick={this.handleDemoLogin}>DEMO LOGIN</button>
               <Link className='splash-signup' to={'/login'}>GET STARTED</Link>
             </span>
             <p>Already using Slack? <Link to={'/login'}>Sign in.</Link></p>
