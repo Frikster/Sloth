@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Channel from './channel';
 import {logout} from '../../actions/session_actions';
+import {fetchChannels, fetchChannel} from '../../actions/channel_actions';
 
 const msp = (state) => {
   return {
@@ -10,7 +11,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
-    logout: () => logout()(dispatch)
+    logout: () => logout()(dispatch),
+    fetchChannels: () => dispatch(fetchChannels())
   };
 };
 

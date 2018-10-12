@@ -1,4 +1,10 @@
 class ChannelsController < ApplicationController
+  def index
+    @channels = Channel.all
+    debugger
+    render :index
+  end
+
   def new
   end
 

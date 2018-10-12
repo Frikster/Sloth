@@ -17,7 +17,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { signup, login, logout} from './actions/session_actions';
+// import {fetchChannels} from './actions/channel_actions';
+import {fetchChannels} from './util/channel_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -37,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TESTING START
   window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // window.signup = signup;
+  window.dispatch = store.dispatch;
+  window.fetchChannels = fetchChannels;
+  window.dispatch = store.dispatch;
   // window.login = login;
   // window.logout = logout;
   // TESTING END
