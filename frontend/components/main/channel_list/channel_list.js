@@ -51,8 +51,8 @@ class ChannelList extends React.Component {
 
         <div className='public-channels-list'>
           <p>Public Channels</p>
-          <span>
-            <i onClick={this.createNewChannel} className='fa fa-plus-circle'></i>
+          <span className='channel-list-plus-circle'>
+            <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
           </span>
           <ul>
             {channelNames}
@@ -93,11 +93,3 @@ class ChannelList extends React.Component {
 }
 
 export default ChannelList;
-
-//TODO: move over to their own components
-// <div className='channel-main'>
-//   <div className='channel-header'>
-//     <h1>CHANNEL HEADER</h1>
-//   </div>
-//     <h1>CHANNEL MAIN</h1>
-// </div>
