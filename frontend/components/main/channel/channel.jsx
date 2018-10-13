@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MessageFormContainer from './message_form/message_form_container';
 
 class Main extends React.Component {
 
@@ -16,6 +17,7 @@ class Main extends React.Component {
           <h1>CHANNEL HEADER</h1>
         </div>
         <h1>CHANNEL MAIN</h1>
+        <MessageFormContainer />
       </div>
     );
   }
