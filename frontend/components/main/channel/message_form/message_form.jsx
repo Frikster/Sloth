@@ -48,6 +48,7 @@ class MessageForm extends React.Component {
   handleSendEvent(event) {
     event.preventDefault();
     this.chats.create(
+      // this.props.createMessage, TODO: How to add chat to state??
       this.state.currentChatMessage,
       this.props.currentUser.id,
       this.props.channel.id);
@@ -84,30 +85,36 @@ class MessageForm extends React.Component {
     // </ul>
     // <MessageListContainer chatLogs={this.state.chatLogs} />
 
-    console.log('MESSAGE FORM RENDER')
-    console.log(this.state.chatLogs)
+    let channelName = '';
+    if (this.props.channel) {
+      channelName = this.props.channel.name;
+    }
+
     return (
       <div>
-        <div className='stage'>
+        <div className='chat-stage'>
 
           <MessageListContainer chatLogsState={this.state} />
 
-          <input
-            onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
-            value={ this.state.currentChatMessage }
-            onChange={ (e) => this.updateCurrentChatMessage(e) }
-            type='text'
-            placeholder='Enter your message...'
-            className='chat-input' />
-          <button
-            onClick={ (e) => this.handleSendEvent(e) }
-            className='send'>
-            Send
-          </button>
+          <div className='chat-input-container'>
+            <input
+              onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
+              value={ this.state.currentChatMessage }
+              onChange={ (e) => this.updateCurrentChatMessage(e) }
+              type='text'
+              placeholder={'Message #' + channelName}
+              className='chat-input' />
+          </div>
         </div>
       </div>
     );
   }
 }
+
+// <button
+//   onClick={ (e) => this.handleSendEvent(e) }
+//   className='send'>
+//   Send
+// </button> Button not needed
 
 export default withRouter(MessageForm);

@@ -8,12 +8,13 @@ class MessageList extends React.Component {
     super(props);
   }
 
-  renderChatLog() {
-    console.log('this.props.chatLogsState' + this.props.chatLogsState)
-    return this.props.chatLogsState.chatLogs.map((el) => {
-      console.log('el.content' + el.content);
+  renderChatLog(source) {
+    console.log('renderChatLog')
+    console.log('source' + source)
+    return source.map((el) => {
       return (
         <li key={`chat_${el.id}`}>
+          <span className='chat-author'>{ el.author_id }</span>
           <span className='chat-message'>{ el.content }</span>
           <span className='chat-created-at'>{ el.created_at }</span>
         </li>
@@ -22,12 +23,16 @@ class MessageList extends React.Component {
   }
 
   render() {
-    console.log('MESSAGE LIST RENDER')
+    let channelName = '';
+    if (this.props.channel) {
+      channelName = this.props.channel.name;
+    }
     return (
       <div>
-        <h1>Chat</h1>
+        <h1>{channelName}</h1>
         <ul className='chat-logs'>
-          { this.renderChatLog() }
+          { this.renderChatLog(this.props.getChannelMessages) }
+          { this.renderChatLog(this.props.chatLogsState.chatLogs) }
         </ul>
       </div>
     );

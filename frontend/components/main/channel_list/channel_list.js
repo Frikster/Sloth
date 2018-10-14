@@ -75,8 +75,8 @@ class ChannelList extends React.Component {
         </div>
 
         <div className='public-channels-list'>
-          <p>Public Channels</p>
           <span className='channel-list-plus-circle'>
+            <p>Public Channels</p>
             <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
           </span>
           <ul>
@@ -85,14 +85,12 @@ class ChannelList extends React.Component {
         </div>
 
         <div className='private-channels-list'>
-          <p>Private Channels</p>
           <span className='channel-list-plus-circle'>
+            <p>Private Channels</p>
             <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
           </span>
           <ul>
-            <ul>
-              {privateChannelNames}
-            </ul>
+            {privateChannelNames}
           </ul>
         </div>
 

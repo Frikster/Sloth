@@ -16,7 +16,6 @@ class Channel extends React.Component {
     return (
       <div className='channel-main'>
         <ChannelHeaderContainer />
-        <h1>CHANNEL MAIN</h1>
         <MessageFormContainer />
       </div>
     );

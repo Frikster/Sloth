@@ -6,14 +6,16 @@ html, body {
     height: 100%
 }
 
-.fa-plus-circle {
-  // content: "\f055";
-  height: 50px;
-  width: 50px;
+.fa-plus-circle:hover {
+  color: white;
 }
 
 .channel-list-plus-circle {
-  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .channel-all {
@@ -39,16 +41,50 @@ html, body {
   position:fixed;
   top:0;
   left:225px;
-  padding-left: 20px;
+  // right: 0;
+  // padding-left: 20px;
+  margin-right: 225px;
   height: 100%;
-  width: 100%;
-  border: solid red;
+  width: calc(100vw - 241px);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .channel-header {
-  border: solid red;
-  display: flex;
-  flex-direction: row;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  border-bottom: solid lightgray;
+  border-width: thin;
+  display: block;
 }
+
+.channel-header h1{
+  font-size: 16px;
+}
+
+.chat-input {
+  // position:fixed;
+  // bottom:25px;
+  // left:250px;
+  display: block;
+  font-size: 16px;
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  // margin: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chat-input-container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+// .main {
+//   padding-right: 30px;
+// }
