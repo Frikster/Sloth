@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import Channel from './channel';
+import { withRouter } from 'react-router-dom';
 // import {logout} from '../../actions/session_actions';
 // import {fetchChannels, fetchChannel} from '../../actions/channel_actions';
 
@@ -17,4 +18,4 @@ const mdp = (dispatch) => {
   };
 };
 
-export default connect(msp, mdp)(Channel);
+export default withRouter(connect(msp, mdp)(Channel));

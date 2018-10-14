@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MessageFormContainer from './message_form/message_form_container';
+import ChannelHeaderContainer from './channel_header/channel_header_container';
+import { withRouter } from 'react-router-dom';
 
-class Main extends React.Component {
+class Channel extends React.Component {
 
   // componentDidMount() {
   //   this.props.fetchChannels();
@@ -13,9 +15,7 @@ class Main extends React.Component {
 
     return (
       <div className='channel-main'>
-        <div className='channel-header'>
-          <h1>CHANNEL HEADER</h1>
-        </div>
+        <ChannelHeaderContainer />
         <h1>CHANNEL MAIN</h1>
         <MessageFormContainer />
       </div>
@@ -23,12 +23,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
-
-// TODO: move over to their own components
-// <div className='channel-main'>
-//   <div className='channel-header'>
-//     <h1>CHANNEL HEADER</h1>
-//   </div>
-//     <h1>CHANNEL MAIN</h1>
-// </div>
+export default Channel;

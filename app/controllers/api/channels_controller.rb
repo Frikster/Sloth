@@ -19,6 +19,16 @@ class Api::ChannelsController < ApplicationController
     end
   end
 
+  def show
+    @channel = Channel.find(params[:id])
+    @user = current_user
+    if @channel
+      render "api/channels/show"
+    else
+      render json: @channel.errors.full_messages, status: 404
+    end
+  end
+
   private
   def channel_params
     params.require(:channel).permit(:name, :direct_message_channel)

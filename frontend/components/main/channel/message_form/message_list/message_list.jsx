@@ -14,8 +14,7 @@ class Main extends React.Component {
 
     return (
       <div>
-        <ChannelListContainer />
-        <ChannelContainer />
+
       </div>
     );
   }

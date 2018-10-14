@@ -24,7 +24,7 @@ class MessageForm extends React.Component {
 
   createSocket() {
     // let cable = ActionCable.createConsumer('ws://localhost:3001/cable');
-    let cable = ActionCable.createConsumer('/websocket');
+    let cable = ActionCable.createConsumer('ws://localhost:3000/cable');
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {

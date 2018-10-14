@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter } from 'react-router-dom';
 
 class ChannelList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {creatingChannel: false, newChannelName: ''};
+    this.state = {
+      creatingChannel: false,
+      newChannelName: '',
+      currentChannelId: '1'};
     this.createNewChannel = this.createNewChannel.bind(this);
     this.handleCreateNewPublicChannelSubmit = this.handleCreateNewPublicChannelSubmit.bind(this);
     this.handleCreateNewPrivateChannelSubmit = this.handleCreateNewPrivateChannelSubmit.bind(this);
+    this.handleChannelClick = this.handleChannelClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,10 +41,30 @@ class ChannelList extends React.Component {
     this.props.createChannel({name: this.state.newChannelName, direct_message_channel: true});
   }
 
+  // handleChannelClick(e) {
+  //   e.preventDefault();
+  //   const channelName = (e.target.textContent || e.target.innerText).trim();
+  //   const channel = this.props.channels.filter(channel => channel.name === channelName)[0];
+  //   this.setState({currentChannelId: channel.id}, () => {
+  //       this.props.history.push('/channels/' + this.state.currentChannelId);
+  //     });
+  // }
+
+  handleChannelClick(channelName) {
+    const channel = this.props.channels.filter(channel => channel.name === channelName)[0];
+    this.setState({currentChannelId: channel.id}, () => {
+        this.props.history.push('/channels/' + channel.id);
+      });
+  }
+
   render() {
     console.log(this.props.channels);
-    const channelNames = this.props.channels.map((channel, i) => {
-      return (<li key={i}>{channel.name}</li>);
+    const publicChannelNames = this.props.channels.filter(channel => !channel.direct_message_channel).map((channel, i) => {
+      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
+    });
+
+    const privateChannelNames = this.props.channels.filter(channel => channel.direct_message_channel).map((channel, i) => {
+      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
     });
 
     let toRender = (
@@ -55,14 +80,19 @@ class ChannelList extends React.Component {
             <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
           </span>
           <ul>
-            {channelNames}
+            {publicChannelNames}
           </ul>
         </div>
 
         <div className='private-channels-list'>
           <p>Private Channels</p>
+          <span className='channel-list-plus-circle'>
+            <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
+          </span>
           <ul>
-            <li>{this.props.currentUser.email}</li>
+            <ul>
+              {privateChannelNames}
+            </ul>
           </ul>
         </div>
 
@@ -92,4 +122,4 @@ class ChannelList extends React.Component {
   }
 }
 
-export default ChannelList;
+export default withRouter(ChannelList);
