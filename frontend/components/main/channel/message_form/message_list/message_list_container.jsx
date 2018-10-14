@@ -1,20 +1,21 @@
 import {connect} from 'react-redux';
 import MessageList from './message_list';
+import { withRouter } from 'react-router-dom';
 // import {logout} from '../../actions/session_actions';
-// import {fetchChannels, fetchChannel} from '../../actions/channel_actions';
+import {fetchMessages} from '../../../../../actions/message_actions';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   return {
-    // currentUser: state.entities.users[state.session.id],
-    // channels: Object.values(state.entities.channels)
+    currentUser: state.entities.users[state.session.id],
+    channel: state.entities.channels[ownProps.match.params.channelId],
   };
 };
 
 const mdp = (dispatch) => {
   return {
     // logout: () => logout()(dispatch),
-    // fetchChannels: () => dispatch(fetchChannels())
+    fetchMessages: () => dispatch(fetchMessages())
   };
 };
 
-export default connect(msp, mdp)(MessageList);
+export default withRouter(connect(msp, mdp)(MessageList));

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter } from 'react-router-dom';
+import MessageListContainer from './message_list/message_list_container';
 
 class MessageForm extends React.Component {
 
@@ -23,8 +25,7 @@ class MessageForm extends React.Component {
   }
 
   createSocket() {
-    // let cable = ActionCable.createConsumer('ws://localhost:3001/cable');
-    let cable = ActionCable.createConsumer('ws://localhost:3000/cable');
+    let cable = ActionCable.createConsumer('ws://localhost:3001/cable');
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
@@ -34,16 +35,39 @@ class MessageForm extends React.Component {
         chatLogs.push(data);
         this.setState({chatLogs: chatLogs});
       },
-      create: function(chatContent) {
+      create: function(chatContent, authorId, channelId) {
         this.perform('create', {
-          content: chatContent
+          content: chatContent,
+          author_id: authorId,
+          channel_id: channelId
         });
       }
     });
   }
 
+  handleSendEvent(event) {
+    event.preventDefault();
+    this.chats.create(
+      this.state.currentChatMessage,
+      this.props.currentUser.id,
+      this.props.channel.id);
+    this.setState({
+      currentChatMessage: ''
+    });
+    console.log('FORM STATE CHANGE')
+    console.log(this.state)
+  }
+
+  handleChatInputKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.handleSendEvent(event);
+    }
+  }
+
   renderChatLog() {
+    console.log('this.props.chatLogs' + this.state.chatLogs)
     return this.state.chatLogs.map((el) => {
+      console.log('el.content' + el.content);
       return (
         <li key={`chat_${el.id}`}>
           <span className='chat-message'>{ el.content }</span>
@@ -53,29 +77,21 @@ class MessageForm extends React.Component {
     });
   }
 
-  handleSendEvent(event) {
-    event.preventDefault();
-    this.chats.create(this.state.currentChatMessage);
-    this.setState({
-      currentChatMessage: ''
-    });
-  }
-
-  handleChatInputKeyPress(event) {
-    if (event.key === 'Enter') {
-      this.handleSendEvent(event);
-    }//end if
-  }
-
   render() {
+    // <h1>Chat</h1>
+    // <ul className='chat-logs'>
+    //   { this.renderChatLog() }
+    // </ul>
+    // <MessageListContainer chatLogs={this.state.chatLogs} />
 
+    console.log('MESSAGE FORM RENDER')
+    console.log(this.state.chatLogs)
     return (
       <div>
         <div className='stage'>
-          <h1>Chat</h1>
-          <ul className='chat-logs'>
-            { this.renderChatLog() }
-          </ul>
+
+          <MessageListContainer chatLogsState={this.state} />
+
           <input
             onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
             value={ this.state.currentChatMessage }
@@ -94,4 +110,4 @@ class MessageForm extends React.Component {
   }
 }
 
-export default MessageForm;
+export default withRouter(MessageForm);

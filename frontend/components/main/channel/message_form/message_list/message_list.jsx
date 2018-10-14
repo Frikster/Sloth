@@ -1,23 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ChannelListContainer from './channel_list/channel_list_container';
-import ChannelContainer from './channel/channel_container';
+import { withRouter } from 'react-router-dom';
 
-class Main extends React.Component {
+class MessageList extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.fetchChannels();
-  // }
+  constructor(props) {
+    super(props);
+  }
+
+  renderChatLog() {
+    console.log('this.props.chatLogsState' + this.props.chatLogsState)
+    return this.props.chatLogsState.chatLogs.map((el) => {
+      console.log('el.content' + el.content);
+      return (
+        <li key={`chat_${el.id}`}>
+          <span className='chat-message'>{ el.content }</span>
+          <span className='chat-created-at'>{ el.created_at }</span>
+        </li>
+      );
+    });
+  }
 
   render() {
-
+    console.log('MESSAGE LIST RENDER')
     return (
       <div>
-
+        <h1>Chat</h1>
+        <ul className='chat-logs'>
+          { this.renderChatLog() }
+        </ul>
       </div>
     );
   }
 }
 
-export default Main;
+export default withRouter(MessageList);

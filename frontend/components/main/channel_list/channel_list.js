@@ -58,7 +58,7 @@ class ChannelList extends React.Component {
   }
 
   render() {
-    console.log(this.props.channels);
+    // console.log(this.props.channels);
     const publicChannelNames = this.props.channels.filter(channel => !channel.direct_message_channel).map((channel, i) => {
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
     });
