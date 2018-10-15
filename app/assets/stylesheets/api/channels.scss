@@ -6,8 +6,24 @@ html, body {
     height: 100%
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 2em;
+  text-indent: -.7em;
+}
+
+li::before {
+  content: "# ";
+}
+
 .fa-plus-circle:hover {
   color: white;
+  cursor: pointer;
 }
 
 .channel-list-plus-circle {
@@ -31,6 +47,21 @@ html, body {
   background-color: #4d394b;
   width: 225px;
   height: 100%;
+}
+
+.channel-list-container h3 {
+  padding: 10px;
+  margin: 0
+}
+
+.channel-list-container h3:hover {
+  background-color: #3E313C;
+  cursor: pointer;
+}
+//TODO: combine above with below?
+.channel-list-container li:hover {
+  background-color: #3E313C;
+  cursor: pointer;
 }
 
 .channel-list-container * {
@@ -83,6 +114,11 @@ html, body {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.chat-logs {
+  height: 500px;
+  overflow-y: scroll;
 }
 
 // .main {

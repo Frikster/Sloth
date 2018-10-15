@@ -22,6 +22,6 @@ export const fetchMessage = (id) => (dispatch) => {
   return messageAPI.fetchMessages(id).then(res => dispatch(receiveMessage(res)));
 };
 
-export const createMessage = (message) => (dispatch) => {
-  return messageAPI.createMessage(message).then(res => dispatch(receiveMessage(res)));
-};
+// export const createMessage = (message) => (dispatch) => {
+//   return messageAPI.createMessage(message).then(res => dispatch(receiveMessage(res)));
+// };

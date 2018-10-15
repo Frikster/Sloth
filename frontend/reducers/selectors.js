@@ -3,5 +3,5 @@ export const getAllUsernames = ({entities}) => {
 };
 
 export const getChannelMessages = ({entities}, channelId) => {
-  return Object.values(entities.messages).filter(message => message.channel_id === channelId);
+  return Object.values(entities.messages).filter(message => message.channel_id.toString() === channelId.toString());
 };

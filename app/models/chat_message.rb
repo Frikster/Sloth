@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: chat_messages
+#
+#  id         :bigint(8)        not null, primary key
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  author_id  :integer          not null
+#  channel_id :integer          not null
+#
+
 class ChatMessage < ApplicationRecord
   after_create_commit do
     ChatMessageCreationEventBroadcastJob.perform_later(self)

@@ -1,1 +1,1 @@
-json.extract! message, :id, :body, :author_id, :channel_id
+json.extract! message, :id, :content, :author_id, :channel_id, :created_at

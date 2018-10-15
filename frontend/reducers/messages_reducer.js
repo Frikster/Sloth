@@ -1,6 +1,6 @@
 import {RECEIVE_MESSAGES, RECEIVE_MESSAGE} from '.././actions/message_actions';
 
-const channelReducer = (state = {}, action) => {
+const messageReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_MESSAGES:
@@ -12,4 +12,4 @@ const channelReducer = (state = {}, action) => {
   };
 };
 
-export default channelReducer;
+export default messageReducer;

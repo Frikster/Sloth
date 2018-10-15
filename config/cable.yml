@@ -8,3 +8,6 @@ production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
   channel_prefix: sloth_production
+
+
+#TODO: change the production URL if you push your app to, say, Heroku later on.

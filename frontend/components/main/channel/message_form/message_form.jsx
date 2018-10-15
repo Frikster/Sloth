@@ -14,7 +14,7 @@ class MessageForm extends React.Component {
     super(props);
     this.state = {
       currentChatMessage: '',
-      chatLogs: []
+      // chatLogs: []
     };
   }
 
@@ -31,9 +31,11 @@ class MessageForm extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
-        let chatLogs = this.state.chatLogs;
-        chatLogs.push(data);
-        this.setState({chatLogs: chatLogs});
+        // debugger
+        this.props.newMessage(data)
+        // let chatLogs = this.state.chatLogs;
+        // chatLogs.push(data);
+        // setState({chatLogs: chatLogs});
       },
       create: function(chatContent, authorId, channelId) {
         this.perform('create', {
@@ -55,8 +57,8 @@ class MessageForm extends React.Component {
     this.setState({
       currentChatMessage: ''
     });
-    console.log('FORM STATE CHANGE')
-    console.log(this.state)
+    // console.log('FORM STATE CHANGE')
+    // console.log(this.state)
   }
 
   handleChatInputKeyPress(event) {
@@ -66,9 +68,9 @@ class MessageForm extends React.Component {
   }
 
   renderChatLog() {
-    console.log('this.props.chatLogs' + this.state.chatLogs)
+    // console.log('this.props.chatLogs' + this.state.chatLogs)
     return this.state.chatLogs.map((el) => {
-      console.log('el.content' + el.content);
+      // console.log('el.content' + el.content);
       return (
         <li key={`chat_${el.id}`}>
           <span className='chat-message'>{ el.content }</span>
@@ -94,7 +96,7 @@ class MessageForm extends React.Component {
       <div>
         <div className='chat-stage'>
 
-          <MessageListContainer chatLogsState={this.state} />
+          <MessageListContainer />
 
           <div className='chat-input-container'>
             <input
@@ -110,6 +112,9 @@ class MessageForm extends React.Component {
     );
   }
 }
+
+// <MessageListContainer chatLogsState={this.state} />
+
 
 // <button
 //   onClick={ (e) => this.handleSendEvent(e) }

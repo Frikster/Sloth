@@ -9,7 +9,7 @@ const msp = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     channel: state.entities.channels[ownProps.match.params.channelId],
-    getChannelMessages: getChannelMessages(state, ownProps.match.params.channelId)
+    getChannelMessages: getChannelMessages(state, ownProps.match.params.channelId) //state changes here (from form) => rerender. Wow.
   };
 };
 

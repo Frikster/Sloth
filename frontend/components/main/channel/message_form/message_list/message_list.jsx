@@ -4,13 +4,17 @@ import { withRouter } from 'react-router-dom';
 
 class MessageList extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchMessages();
+  }
+
   constructor(props) {
     super(props);
   }
 
   renderChatLog(source) {
-    console.log('renderChatLog')
-    console.log('source' + source)
+    // console.log('renderChatLog')
+    // console.log('source' + source)
     return source.map((el) => {
       return (
         <li key={`chat_${el.id}`}>
@@ -27,16 +31,17 @@ class MessageList extends React.Component {
     if (this.props.channel) {
       channelName = this.props.channel.name;
     }
+    // console.log(this.props.getChannelMessages)
     return (
       <div>
         <h1>{channelName}</h1>
         <ul className='chat-logs'>
           { this.renderChatLog(this.props.getChannelMessages) }
-          { this.renderChatLog(this.props.chatLogsState.chatLogs) }
         </ul>
       </div>
     );
   }
 }
+// { this.renderChatLog(this.props.chatLogsState.chatLogs) }
 
 export default withRouter(MessageList);
