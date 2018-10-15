@@ -9,7 +9,6 @@ const channelReducer = (state = {}, action) => {
     case RECEIVE_CHANNELS:
       return action.channels;
     case RECEIVE_CHANNEL:
-      debugger
       return Object.assign({}, state, {[action.payload.channel.id]: action.payload.channel});
     default:
       return state;
