@@ -9,9 +9,9 @@ export const receiveChannels = (channels) => {
   };
 };
 
-export const receiveChannel = (channel) => ({
+export const receiveChannel = (payload) => ({
   type: RECEIVE_CHANNEL,
-  channel
+  payload
 });
 
 export const fetchChannels = () => (dispatch) => {
@@ -19,7 +19,7 @@ export const fetchChannels = () => (dispatch) => {
 };
 
 export const fetchChannel = (id) => (dispatch) => {
-  return channelAPI.fetchChannels(id).then(res => dispatch(receiveChannel(res)));
+  return channelAPI.fetchChannel(id).then(res => dispatch(receiveChannel(res)));
 };
 
 export const createChannel = (channel) => (dispatch) => {

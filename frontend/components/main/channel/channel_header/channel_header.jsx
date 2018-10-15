@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class ChannelHeader extends React.Component {
 
   componentDidMount() {
+    debugger
     this.props.fetchChannel(this.props.match.params.channelId);
   }
 
