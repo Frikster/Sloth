@@ -1,3 +1,4 @@
+// jscs:disable maximumLineLength
 import {connect} from 'react-redux';
 import MessageForm from './message_form';
 import { withRouter } from 'react-router-dom';

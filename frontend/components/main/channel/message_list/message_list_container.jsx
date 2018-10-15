@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import MessageList from './message_list';
 import { withRouter } from 'react-router-dom';
 // import {logout} from '../../actions/session_actions';
-import {fetchMessages} from '../../../../../actions/message_actions';
-import {getChannelMessages} from '../../../../../reducers/selectors';
+import {fetchMessages} from '../../../../actions/message_actions';
+import {getChannelMessages} from '../../../../reducers/selectors';
 
 const msp = (state, ownProps) => {
   return {

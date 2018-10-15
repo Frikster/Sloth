@@ -1,8 +1,9 @@
+// jscs:disable maximumLineLength
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
-import MessageListContainer from './message_list/message_list_container';
+// import MessageListContainer from './message_list/message_list_container';
 
 class MessageForm extends React.Component {
 
@@ -96,7 +97,6 @@ class MessageForm extends React.Component {
       <div>
         <div className='chat-stage'>
 
-          <MessageListContainer />
 
           <div className='chat-input-container'>
             <input
@@ -114,8 +114,6 @@ class MessageForm extends React.Component {
 }
 
 // <MessageListContainer chatLogsState={this.state} />
-
-
 // <button
 //   onClick={ (e) => this.handleSendEvent(e) }
 //   className='send'>
