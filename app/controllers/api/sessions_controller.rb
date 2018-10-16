@@ -8,6 +8,7 @@ class Api::SessionsController < ApplicationController
     if @user
       login!(@user)
       @channel = Channel.first
+      @user_channels = UserChannel.where(user_id: @user.id)
       render "api/channels/show"
     else
       if User.find_by(email: params[:user][:email])

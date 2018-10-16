@@ -10,13 +10,13 @@ class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     @channel.author_id = current_user.id
+    # p @channel
     @user = current_user
     if @channel.save
       #TODO: populate list with channel, maintaining alphabetical border
-      # channel_id = Channel.find(name: channel_params.name).id
-      # ChannelUser.create!({channel_id: channel_id, user_id: @user.id})
-      # TODO: Is this even needed...? Given how my sample state is I can just add id's where needed and use a selector
-      # is the joins table even needed?
+      user_channel = UserChannel.new({channel_id: @channel.id, user_id: @user.id})
+      user_channel.save!
+      @user_channels = [user_channel]
       render "api/channels/show"
     else
       render json: @channel.errors.full_messages, status: 422

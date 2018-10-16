@@ -6,3 +6,13 @@ end
 json.channel do
   json.partial! 'api/channels/channel', channel: @channel
 end
+
+@user_channels.each do |user_channel|
+  json.set! user_channel.id do
+    json.partial! 'api/user_channels/user_channel', user_channel: user_channel
+  end
+end
+
+# json.user_channel do
+#   json.partial! 'api/user_channels/user_channel', user_channel: @user_channel
+# end

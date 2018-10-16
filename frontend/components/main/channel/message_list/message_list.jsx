@@ -33,9 +33,9 @@ class MessageList extends React.Component {
     }
     // console.log(this.props.getChannelMessages)
     return (
-      <div>
+      <div className='chat-logs'>
         <h1>{channelName}</h1>
-        <ul className='chat-logs'>
+        <ul >
           { this.renderChatLog(this.props.getChannelMessages) }
         </ul>
       </div>

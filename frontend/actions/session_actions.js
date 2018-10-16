@@ -18,6 +18,7 @@ export const receiveErrors = (errors) => ({
 });
 
 export const login = (user) => (dispatch) => {
+  // debugger
   return sessionAPI.login(user).then(res => dispatch(receiveCurrentUser(res)),
   err => dispatch(receiveErrors(err.responseJSON)));
 };

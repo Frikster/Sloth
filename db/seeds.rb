@@ -5,8 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Channel.delete_all
+User.delete_all
+UserChannel.delete_all
+ChatMessage.delete_all
+
 Channel.create!(id: 1, name: 'General', direct_message_channel: false)
+
 andy = User.create!(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456')
-Channel.create!(name: andy.username, direct_message_channel: true, author_id: andy.id)
+andy_direct = Channel.create!(name: andy.username, direct_message_channel: true, author_id: andy.id)
+UserChannel.create!(user_id: andy.id, channel_id: andy_direct.id)
+UserChannel.create!(user_id: andy.id, channel_id: 1)
+
 dirk = User.create!(email: 'you@example.com', username:'Dirk', password: '123456')
-Channel.create!(name: dirk.username, direct_message_channel: true, author_id: dirk.id)
+dirk_direct = Channel.create!(name: dirk.username, direct_message_channel: true, author_id: dirk.id)
+UserChannel.create!(user_id: dirk.id, channel_id: dirk_direct.id)
+UserChannel.create!(user_id: dirk.id, channel_id: 1)
+
+UserChannel.create!(user_id: andy.id, channel_id: dirk_direct.id)
+UserChannel.create!(user_id: dirk.id, channel_id: andy_direct.id)

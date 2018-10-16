@@ -5,3 +5,12 @@ export const getAllUsernames = ({entities}) => {
 export const getChannelMessages = ({entities}, channelId) => {
   return Object.values(entities.messages).filter(message => message.channel_id.toString() === channelId.toString());
 };
+
+export const getJoinedChannels = ({session, entities}) => {
+  const userId = session.id;
+  const channel_ids = Object.values(entities.userChannels)
+    .filter(userChannel => userChannel.user_id.toString() === userId.toString())
+    .map(userChannel => userChannel.channel_id);
+    // debugger;
+  return Object.values(entities.channels).filter(channel => channel.id in channel_ids);
+};

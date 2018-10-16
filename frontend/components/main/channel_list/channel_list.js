@@ -19,6 +19,7 @@ class ChannelList extends React.Component {
 
   componentDidMount() {
     this.props.fetchChannels();
+    this.props.fetchUserChannels();
   }
 
   createNewChannel(e) {

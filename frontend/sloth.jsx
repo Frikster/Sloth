@@ -1,6 +1,7 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import { signup, login, logout} from './actions/session_actions';
+import {login, logout} from './util/session_api_util';
 // import configureStore from './store/store.js';
 //
 // document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchChannels = fetchChannels;
   window.createChannel = createChannel;
   window.dispatch = store.dispatch;
-  // window.login = login;
+  window.login = login;
   // window.logout = logout;
   // TESTING END
   const root = document.getElementById('root');

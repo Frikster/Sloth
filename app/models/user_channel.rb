@@ -10,7 +10,7 @@
 #
 
 class UserChannel < ApplicationRecord
-  validates :user_id, channel_id: true
+  validates :user_id, :channel_id, presence: true
 
   has_many :users
   has_many :messages
