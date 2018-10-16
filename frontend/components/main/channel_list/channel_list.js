@@ -78,7 +78,7 @@ class ChannelList extends React.Component {
         <div className='public-channels-list'>
           <span className='channel-list-plus-circle'>
             <p>Public Channels</p>
-            <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
+            <i onClick={() => this.props.openModal('new_public_channel')} className='fas fa-plus-circle'></i>
           </span>
           <ul>
             {publicChannelNames}

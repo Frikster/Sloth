@@ -5,6 +5,7 @@ import {fetchChannels, fetchChannel, createChannel} from '../../../actions/chann
 import {fetchUserChannels} from '../../../actions/userChannel_actions';
 import {getJoinedChannels} from '../../../reducers/selectors';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '../../../actions/modal_actions';
 
 const msp = (state) => {
   return {
@@ -20,7 +21,8 @@ const mdp = (dispatch) => {
     logout: () => logout()(dispatch),
     fetchChannels: () => dispatch(fetchChannels()),
     createChannel: (channel) => dispatch(createChannel(channel)),
-    fetchUserChannels:  () => dispatch(fetchUserChannels())
+    fetchUserChannels:  () => dispatch(fetchUserChannels()),
+    openModal: modal => dispatch(openModal(modal))
   };
 };
 
