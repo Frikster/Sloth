@@ -17,7 +17,11 @@ li {
   text-indent: -.7em;
 }
 
-li::before {
+.public-channels-list li::before {
+  content: "# ";
+}
+
+.private-channels-list li::before {
   content: "# ";
 }
 
@@ -49,16 +53,6 @@ li::before {
   height: 100%;
 }
 
-.channel-list-container h3 {
-  padding: 10px;
-  margin: 0
-}
-
-.channel-list-container h3:hover {
-  background-color: #3E313C;
-  cursor: pointer;
-}
-//TODO: combine above with below?
 .channel-list-container li:hover {
   background-color: #3E313C;
   cursor: pointer;
@@ -81,18 +75,6 @@ li::before {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-}
-
-.channel-header {
-  padding-bottom: 20px;
-  padding-left: 10px;
-  border-bottom: solid lightgray;
-  border-width: thin;
-  display: block;
-}
-
-.channel-header h1{
-  font-size: 16px;
 }
 
 .chat-input {

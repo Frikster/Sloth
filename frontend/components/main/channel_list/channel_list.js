@@ -87,9 +87,12 @@ class ChannelList extends React.Component {
       <div className='channel-list-container'>
         <div className='channel-list-container-header' onClick={this.showDropdown}>
           <h3>App Academy</h3>
-          <button onClick={this.props.logout}>logout</button>
-           {dropdown}
+          <ul className='channel-header-username'>
+            <li>{this.props.currentUser.username}</li>
+          </ul>
+          {dropdown}
         </div>
+
 
         <div className='public-channels-list'>
           <span className='channel-list-plus-circle'>

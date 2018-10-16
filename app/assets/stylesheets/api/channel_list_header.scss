@@ -1,0 +1,28 @@
+.channel-header-username {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.channel-header-username li::before {
+  list-style: none;
+  content: '\25CF  ';
+  font-size: 20px;
+  color: #38978d;
+}
+
+.channel-header-username li {
+  padding-left: 1.5em;
+  font-size: 13px;
+}
+
+.channel-list-container h3 {
+  padding: 10px;
+  padding-bottom: 0;
+  margin: 0
+}
+
+.channel-list-container-header:hover{
+  background-color: #3E313C;
+  cursor: pointer;
+}

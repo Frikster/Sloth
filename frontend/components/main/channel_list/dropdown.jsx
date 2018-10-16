@@ -9,9 +9,9 @@ class Dropdown extends React.Component {
   render () {
     return (
       <div className='dropdown'>
+        <h3 className='dropdown-username'>{this.props.currentUser.username}</h3>
         <ul>
-          <li className='dropdown-username'>Username: {this.props.currentUser.username}</li>
-          <li className='dropdown-signout'><span onClick={this.props.logout}>Sign Out</span></li>
+          <li className='dropdown-signout' onClick={this.props.logout}>Sign out</li>
         </ul>
       </div>
     );
