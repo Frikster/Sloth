@@ -8,7 +8,9 @@ class Api::SessionsController < ApplicationController
     if @user
       login!(@user)
       @channel = Channel.first
-      @user_channels = UserChannel.where(user_id: @user.id)
+      @user_channel = UserChannel.where(user_id: @user.id)[0]
+      # TODO: make it remember the last channel you were on
+      # debugger
       render "api/channels/show"
     else
       if User.find_by(email: params[:user][:email])

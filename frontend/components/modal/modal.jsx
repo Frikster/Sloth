@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import PubliChannelFormContainer from '../channel_form/public_channel_form_container';
+import PublicChannelFormContainer from '../channel_form/public_channel_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -10,7 +10,10 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal) {
     case 'new_public_channel':
-      component = <PubliChannelFormContainer />;
+      component = <PublicChannelFormContainer />;
+      break;
+    case 'new_private_channel':
+      //TODO
       break;
     default:
       return null;

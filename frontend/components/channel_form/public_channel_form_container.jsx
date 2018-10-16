@@ -3,6 +3,7 @@ import React from 'react';
 // import { login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import PublicChannelForm from './public_channel_form';
+import {createChannel} from '../../actions/channel_actions';
 
 const mapStateToProps = ({errors}) => {
   return {
@@ -13,8 +14,8 @@ const mapStateToProps = ({errors}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(login(user)),
-    closeModal: () => dispatch(closeModal())
+    processForm: (channel) => dispatch(createChannel(channel)),
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

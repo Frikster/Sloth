@@ -11,7 +11,8 @@ class Api::UsersController < ApplicationController
       end
       login!(@user)
       @channel = Channel.first
-      @user_channels = UserChannel.where(user_id: @user.id)
+      @user_channel = UserChannel.where(user_id: @user.id)[0]
+      # debugger
       render "api/channels/show"
     else
       render json: @user.errors.full_messages, status: 422

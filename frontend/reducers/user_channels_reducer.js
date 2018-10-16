@@ -7,6 +7,12 @@ const userChannelsReducer = (state = {}, action) => {
     case RECEIVE_USER_CHANNELS:
       return action.userChannels;
     case RECEIVE_CHANNEL:
+      // let newState = state;
+      // debugger
+      // action.payload.user_channels.forEach(user_channel => {
+      //   newState = Object.assign({}, newState, {[user_channel.id]: user_channel});
+      // });
+      // return newState;
       return Object.assign({}, state, {[action.payload.user_channel.id]: action.payload.user_channel});
     default:
       return state;

@@ -14,9 +14,10 @@ class Api::ChannelsController < ApplicationController
     @user = current_user
     if @channel.save
       #TODO: populate list with channel, maintaining alphabetical border
-      user_channel = UserChannel.new({channel_id: @channel.id, user_id: @user.id})
-      user_channel.save!
-      @user_channels = [user_channel]
+      @user_channel = UserChannel.new({channel_id: @channel.id, user_id: @user.id})
+      @user_channel.save!
+      # @user_channel = [user_channel]
+      # debugger
       render "api/channels/show"
     else
       render json: @channel.errors.full_messages, status: 422
