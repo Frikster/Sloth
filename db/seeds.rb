@@ -22,5 +22,6 @@ dirk_direct = Channel.create!(name: dirk.username, direct_message_channel: true,
 UserChannel.create!(user_id: dirk.id, channel_id: dirk_direct.id)
 UserChannel.create!(user_id: dirk.id, channel_id: 1)
 
-UserChannel.create!(user_id: andy.id, channel_id: dirk_direct.id)
-UserChannel.create!(user_id: dirk.id, channel_id: andy_direct.id)
+dirk_andy = Channel.create!(name: dirk.username + ', ' + andy.username, direct_message_channel: true)
+UserChannel.create!(user_id: andy.id, channel_id: dirk_andy.id)
+UserChannel.create!(user_id: dirk.id, channel_id: dirk_andy.id)

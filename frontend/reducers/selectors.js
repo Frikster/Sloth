@@ -11,6 +11,5 @@ export const getJoinedChannels = ({session, entities}) => {
   const channel_ids = Object.values(entities.userChannels)
     .filter(userChannel => userChannel.user_id.toString() === userId.toString())
     .map(userChannel => userChannel.channel_id);
-    // debugger;
-  return Object.values(entities.channels).filter(channel => channel.id in channel_ids);
+  return Object.values(entities.channels).filter(channel => channel_ids.includes(channel.id));
 };
