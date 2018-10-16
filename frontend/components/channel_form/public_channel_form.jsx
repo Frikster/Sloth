@@ -1,6 +1,6 @@
 import React from 'react';
-import ChannelListContainer from './channel_list/channel_list_container';
-import ChannelContainer from './channel/channel_container';
+import {withRouter} from 'react-router';
+// import ChannelListContainer from './channel_list/channel_list_container';
 
 class PublicChannelForm extends React.Component {
 

@@ -14,6 +14,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
+import Modal from './modal/modal';
 
 library.add(faStroopwafel);
 // import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ library.add(faStroopwafel);
 const App = () => (
   // Still have to make protected routes
   <div>
+    <Modal />
     <Route exact path='/' component={SplashContainer} />
     <AuthRoute path='/login' component={LoginFormContainer} />
     <AuthRoute path='/signup' component={SignupFormContainer} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
+import Dropdown from './dropdown';
 
 class ChannelList extends React.Component {
 
@@ -10,11 +11,13 @@ class ChannelList extends React.Component {
     this.state = {
       creatingChannel: false,
       newChannelName: '',
-      currentChannelId: '1'};
+      currentChannelId: '1',
+      dropdownOpen: false};
     this.createNewChannel = this.createNewChannel.bind(this);
     this.handleCreateNewPublicChannelSubmit = this.handleCreateNewPublicChannelSubmit.bind(this);
     this.handleCreateNewPrivateChannelSubmit = this.handleCreateNewPrivateChannelSubmit.bind(this);
     this.handleChannelClick = this.handleChannelClick.bind(this);
+    this.showDropdown = this.showDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +61,11 @@ class ChannelList extends React.Component {
       });
   }
 
+  showDropdown(e) {
+    e.preventDefault();
+    this.setState({dropdownOpen: !this.state.dropdownOpen});
+  }
+
   render() {
     // console.log(this.props.channels);
     const publicChannelNames = this.props.channels.filter(channel => !channel.direct_message_channel).map((channel, i) => {
@@ -68,11 +76,19 @@ class ChannelList extends React.Component {
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
     });
 
+    let dropdown;
+    if (this.state.dropdownOpen === true) {
+      dropdown = <Dropdown currentUser={this.props.currentUser} logout={this.props.logout}/>;
+    } else {
+      dropdown = undefined;
+    }
+
     let toRender = (
       <div className='channel-list-container'>
-        <div className='channel-list-container-header'>
+        <div className='channel-list-container-header' onClick={this.showDropdown}>
           <h3>App Academy</h3>
           <button onClick={this.props.logout}>logout</button>
+           {dropdown}
         </div>
 
         <div className='public-channels-list'>
