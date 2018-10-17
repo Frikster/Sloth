@@ -20,6 +20,7 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "selectize": "^0.12.6",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   },

@@ -14,6 +14,11 @@ class Api::ChannelsController < ApplicationController
     @user = current_user
     if @channel.save
       #TODO: populate list with channel, maintaining alphabetical border
+      # if params.other_user_ids.
+      #   params.other_user_ids.each do |other_user_id|
+      #     UserChannel.create!({channel_id: @channel.id, user_id: other_user_id})
+      #   end
+      # end
       @user_channel = UserChannel.new({channel_id: @channel.id, user_id: @user.id})
       @user_channel.save!
       # @user_channel = [user_channel]
