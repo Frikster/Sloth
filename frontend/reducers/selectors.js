@@ -13,3 +13,7 @@ export const getJoinedChannels = ({session, entities}) => {
     .map(userChannel => userChannel.channel_id);
   return Object.values(entities.channels).filter(channel => channel_ids.includes(channel.id));
 };
+
+export const getAllPrivateChannels = ({entities}) => {
+  return Object.values(entities.channels).filter(channel => channel.direct_message_channel);
+}

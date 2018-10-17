@@ -83,7 +83,56 @@ class ChannelList extends React.Component {
       dropdown = undefined;
     }
 
-    let toRender = (
+    // let toRender = (
+    //   <div className='channel-list-container'>
+    //     <div className='channel-list-container-header' onClick={this.showDropdown}>
+    //       <h3>App Academy</h3>
+    //       <ul className='channel-header-username'>
+    //         <li>{this.props.currentUser.username}</li>
+    //       </ul>
+    //       {dropdown}
+    //     </div>
+    //
+    //
+    //     <div className='public-channels-list'>
+    //       <span className='channel-list-plus-circle'>
+    //         <p>Public Channels</p>
+    //         <i onClick={() => this.props.openModal('new_public_channel')} className='fas fa-plus-circle'></i>
+    //       </span>
+    //       <ul>
+    //         {publicChannelNames}
+    //       </ul>
+    //     </div>
+    //
+    //     <div className='private-channels-list'>
+    //       <span className='channel-list-plus-circle'>
+    //         <p>Private Channels</p>
+    //         <i onClick={() => this.props.openModal('new_private_channel')} className='fas fa-plus-circle'></i>
+    //       </span>
+    //       <ul>
+    //         {privateChannelNames}
+    //       </ul>
+    //     </div>
+    //
+    //   </div>
+    // );
+    //
+    // if (this.state.creatingChannel) {
+    //   toRender = (
+    //     <div>
+    //       <h1>Create New Channel</h1>
+    //       <form onSubmit={this.handleCreateNewPublicChannelSubmit}>
+    //         <input
+    //           type='text'
+    //           value={this.state.newChannelName}
+    //           onChange={this.update('newChannelName')}/>
+    //         <input type='submit' value='GO'/>
+    //       </form>
+    //     </div>
+    //   );
+    // };
+
+    return (
       <div className='channel-list-container'>
         <div className='channel-list-container-header' onClick={this.showDropdown}>
           <h3>App Academy</h3>
@@ -107,34 +156,13 @@ class ChannelList extends React.Component {
         <div className='private-channels-list'>
           <span className='channel-list-plus-circle'>
             <p>Private Channels</p>
-            <i onClick={this.createNewChannel} className='fas fa-plus-circle'></i>
+            <i onClick={() => this.props.openModal('new_private_channel')} className='fas fa-plus-circle'></i>
           </span>
           <ul>
             {privateChannelNames}
           </ul>
         </div>
 
-      </div>
-    );
-
-    if (this.state.creatingChannel) {
-      toRender = (
-        <div>
-          <h1>Create New Channel</h1>
-          <form onSubmit={this.handleCreateNewPublicChannelSubmit}>
-            <input
-              type='text'
-              value={this.state.newChannelName}
-              onChange={this.update('newChannelName')}/>
-            <input type='submit' value='GO'/>
-          </form>
-        </div>
-      );
-    };
-
-    return (
-      <div>
-        {toRender}
       </div>
     );
   }

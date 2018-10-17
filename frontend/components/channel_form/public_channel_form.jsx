@@ -12,15 +12,15 @@ class PublicChannelForm extends React.Component {
     super(props);
     this.state = {
       newChannelName: ''};
-    this.createNewChannel = this.createNewChannel.bind(this);
+    // this.createNewChannel = this.createNewChannel.bind(this);
     this.handleCreateNewPublicChannelSubmit = this.handleCreateNewPublicChannelSubmit.bind(this);
   }
 
-  createNewChannel(e) {
-    this.setState({
-      creatingChannel: true
-    });
-  };
+  // createNewChannel(e) {
+  //   this.setState({
+  //     creatingChannel: true
+  //   });
+  // };
 
   handleCreateNewPublicChannelSubmit(e) {
     this.props.processForm({name: this.state.newChannelName, direct_message_channel: false});
