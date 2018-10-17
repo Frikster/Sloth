@@ -103,20 +103,28 @@ class PrivateChannelForm extends React.Component {
     // };
 
     return (
-      <div>
+      <div className='private-channel-form-div'>
+
         <h1>Create New Private Channel</h1>
         <form onSubmit={this.handleCreateNewPrivateChannelSubmit}>
-          <input
-            type='text'
-            value={this.state.newChannelName}
-            onChange={this.update('newChannelName')}/>
+              <label className='private-channel-name-input-label' for='private-channel-name-input'>Name</label>
+              <input
+                className='private-channel-name-input'
+                type='text'
+                value={this.state.newChannelName}
+                onChange={this.update('newChannelName')}
+                placeholder='# e.g. finance'/>
           <br/>
-          <input
-            type='text'
-            onChange={this.filterChannelList}/>
-          <input type='submit' value='GO'/>
+          <div className='private-channel-user-input-div'>
+              <input
+              className='private-channel-user-input'
+              type='text'
+              onChange={this.filterChannelList}
+              placeholder='Find or start a conversation'/>
+            <input type='submit' value='Go'/>
+          </div>
           <div>{usernamesToList}</div>
-          <ul>
+          <ul className='private-channel-form-privateChannel-ul'>
             {privateChannels}
           </ul>
         </form>

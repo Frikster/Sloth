@@ -9,8 +9,72 @@
 }
 
 .modal-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 500px;
+  margin:auto;
+}
+
+// .private-channel-form-div {
+//   ;
+// }
+//
+// .private-channel-form-div form {
+//   position: relative;
+// } TODO: TA.
+
+.private-channel-name-input ,.private-channel-user-input {
+  font-size: 20px;
+  padding: 15px;
+  margin: 5px;
+  border-color: gray;
+  border-width: thin;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.private-channel-name-input-label {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.private-channel-user-input-div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.private-channel-user-input-div input[type='submit'] {
+  border: none;
+  font-size: 20px;
+  padding: 15px;
+  margin: 5px;
+  // color: gray; TODO: gray when no users selected
+  // background-color: lightgray;
+}
+
+// .close-modal-x {
+//   display: flex;
+//   justify-content: flex-end;
+// }
+
+.close-modal-x h1 {
+  position: fixed;
+  right: 55px;
+  top: 35px;
+  color: gray;
+  font-weight: 400;
+}
+
+.close-modal-x:hover {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.private-channel-form-privateChannel-ul {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.private-channel-form-privateChannel-ul li {
+  border-top: thin solid lightgray;
+  padding: 25px;
 }

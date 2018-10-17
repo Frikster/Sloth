@@ -1,0 +1,25 @@
+html, body {
+    height: 100%
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 2em;
+  text-indent: -.7em;
+}
+
+input {
+  display:block;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgray;
+}
+
+label {
+  display:block;
+}

@@ -20,7 +20,10 @@ function Modal({modal, closeModal}) {
       return null;
   }
   return (
-    <div className='modal-background' onClick={closeModal}>
+    <div className='modal-background'>
+      <span className='close-modal-x'>
+        <h1 onClick={closeModal}>X</h1>
+      </span>
       <div className='modal-child' onClick={e => e.stopPropagation()}>
         { component }
       </div>

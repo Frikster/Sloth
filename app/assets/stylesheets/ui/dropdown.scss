@@ -1,13 +1,12 @@
 .dropdown {
-  position: absolute;
-  padding: 8px;
+  position: fixed;
+  padding: 8px 0;
   width: 300px;
   background-color: white;
   border: solid lightgray;
   border-width: thin;
   margin-left: 10px;
   border-radius: 10px;
-  z-index: 0;
 }
 
 .dropdown span {

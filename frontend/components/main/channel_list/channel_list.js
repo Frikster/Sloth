@@ -73,7 +73,10 @@ class ChannelList extends React.Component {
     });
 
     const privateChannelNames = this.props.channels.filter(channel => channel.direct_message_channel).map((channel, i) => {
-      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
+      let noCurrentUserName = channel.name.replace(this.props.currentUser.username, '');
+      if (noCurrentUserName === '') {noCurrentUserName = channel.name;}
+      noCurrentUserName = noCurrentUserName.replace(/(^[,\s]+)|([,\s]+$)/g, ''); //remove trailing commas/whitespaces
+      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
     });
 
     let dropdown;
