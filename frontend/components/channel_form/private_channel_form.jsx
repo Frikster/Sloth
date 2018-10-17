@@ -19,6 +19,7 @@ class PrivateChannelForm extends React.Component {
     this.handleCreateNewPrivateChannelSubmit = this.handleCreateNewPrivateChannelSubmit.bind(this);
     this.addUsersFromChannel = this.addUsersFromChannel.bind(this);
     this.filterChannelList = this.filterChannelList.bind(this);
+    this.removeSelected = this.removeSelected.bind(this);
   }
 
   handleCreateNewPrivateChannelSubmit(e) {
@@ -26,7 +27,20 @@ class PrivateChannelForm extends React.Component {
     // this.state.selectedUsers.forEach(user => {
     //   this.props.createUserChannel({user_id: user.id, channel_id: })
     // });
-    this.props.processForm({name: this.state.newChannelName, direct_message_channel: true}, this.state.selectedUsers); //TODO: ask if there was a point to using polymorphism for modals? Too sleepy to think right now
+    let newChannelName = this.state.newChannelName;
+    let selectedUsersDup = this.state.selectedUsers.slice(0);
+    if (this.state.newChannelName === '') {
+      selectedUsersDup.push(this.props.currentUser);
+      const selectedUsernames = selectedUsersDup.map(user => {
+        return user.username;
+      });
+      // this.setState({
+      //   newChannelName: selectedUsernames.join(', ')
+      // });
+      newChannelName = selectedUsernames.join(', ');
+    }
+    this.props.processForm({name: newChannelName, direct_message_channel: true}, this.state.selectedUsers); //TODO: ask if there was a point to using polymorphism for modals? Too sleepy to think right now
+    this.props.closeModal();
   }
 
   update(field) {
@@ -52,14 +66,23 @@ class PrivateChannelForm extends React.Component {
         }
       });
       // Remove the channel that was clicked:
-      let filteredPrivateChannelsDup = this.state.filteredPrivateChannels.slice(0);
-      filteredPrivateChannelsDup = filteredPrivateChannelsDup.filter(channel => channel != privateChannel);
+      // let filteredPrivateChannelsDup = this.state.filteredPrivateChannels.slice(0);
+      // filteredPrivateChannelsDup = filteredPrivateChannelsDup.filter(channel => channel != privateChannel);
       this.setState({
         selectedUsers: selectedUsersDup,
-        filteredPrivateChannels: filteredPrivateChannelsDup
+        // filteredPrivateChannels: filteredPrivateChannelsDup
       });
     };
   };
+
+  removeSelected(user) {
+    return (e) => {
+      let selectedUsersDup =  this.state.selectedUsers.slice(0).filter(el => el.id != user.id);
+      this.setState({
+        selectedUsers: selectedUsersDup,
+      });
+    };
+  }
 
   filterChannelList(e) {
     const input = e.target.value;
@@ -73,7 +96,7 @@ class PrivateChannelForm extends React.Component {
       return (<li key={i} onClick={this.addUsersFromChannel(privateChannel)}>{privateChannel.name}</li>);
     });
     let usernamesToList = this.state.selectedUsers.map((user, i) => {
-      return (<div key={i} className='private-channel-form-selected-user-tag'>{user.username}</div>);
+      return (<div key={i} className='private-channel-form-selected-user-tag' onClick={this.removeSelected(user)}>{user.username}</div>);
     });
     // if (this.state.selectedUsers.length > 0) {
     //   usernamesToList = this.state.selectedUsers.;

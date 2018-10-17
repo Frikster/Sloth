@@ -24,6 +24,7 @@ class PublicChannelForm extends React.Component {
 
   handleCreateNewPublicChannelSubmit(e) {
     this.props.processForm({name: this.state.newChannelName, direct_message_channel: false});
+    this.props.closeModal();
   }
 
   update(field) {
