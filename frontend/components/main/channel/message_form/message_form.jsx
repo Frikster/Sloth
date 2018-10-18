@@ -26,7 +26,7 @@ class MessageForm extends React.Component {
   }
 
   createSocket() {
-    let cable = ActionCable.createConsumer('wss://app-academy-sloth.herokuapp.com/');
+    let cable = ActionCable.createConsumer('wss://app-academy-sloth.herokuapp.com/cable');
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
