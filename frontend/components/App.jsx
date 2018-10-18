@@ -10,7 +10,7 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import {AuthRoute, ProtectedRoute} from '../util/route_util';
+import {AuthRoute, ProtectedRoute, ProtectedChannelRoute} from '../util/route_util';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
@@ -31,3 +31,4 @@ const App = () => (
 );
 
 export default App;
+// <ProtectedChannelRoute path='/channels/:channelId' component={MainContainer} />
