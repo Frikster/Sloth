@@ -187,7 +187,7 @@ class ChannelList extends React.Component {
 
         <div className='public-channels-list'>
           <span className='channel-list-plus-circle'>
-            <p>Public Channels</p>
+            <p onClick={() => this.props.openModal('join_channel')}>Public Channels</p>
             <i onClick={() => this.props.openModal('new_public_channel')} className='fas fa-plus-circle'></i>
           </span>
           <ul>
@@ -197,7 +197,7 @@ class ChannelList extends React.Component {
 
         <div className='private-channels-list'>
           <span className='channel-list-plus-circle'>
-            <p>Private Channels</p>
+            <p onClick={() => this.props.openModal('new_private_channel')}>Private Channels</p>
             <i onClick={() => this.props.openModal('new_private_channel')} className='fas fa-plus-circle'></i>
           </span>
           <ul>

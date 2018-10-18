@@ -3,6 +3,8 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import PublicChannelFormContainer from '../channel_form/public_channel_form_container';
 import PrivateChannelFormContainer from '../channel_form/private_channel_form_container';
+import JoinChannelFormContainer from '../channel_form/join_channel_form_container';
+
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -15,6 +17,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'new_private_channel':
       component = <PrivateChannelFormContainer />;
+      break;
+    case 'join_channel':
+      component = <JoinChannelFormContainer />;
       break;
     default:
       return null;

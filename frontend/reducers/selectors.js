@@ -25,6 +25,10 @@ export const getAllPrivateChannels = ({entities}) => {
   return Object.values(entities.channels).filter(channel => channel.direct_message_channel);
 };
 
+export const getAllPublicChannels = ({entities}) => {
+  return Object.values(entities.channels).filter(channel => !channel.direct_message_channel);
+};
+
 export const getAllPrivateChannelsOfCurrentUser = (state) => {
   return getJoinedChannels(state).filter(channel => channel.direct_message_channel);
 }
