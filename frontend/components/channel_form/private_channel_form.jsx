@@ -93,10 +93,13 @@ class PrivateChannelForm extends React.Component {
 
   render() {
     const privateChannels = this.state.filteredPrivateChannels.map((privateChannel,i) => {
-      return (<li key={i} onClick={this.addUsersFromChannel(privateChannel)}>{privateChannel.name}</li>);
+      return (<li key={i} onClick={this.addUsersFromChannel(privateChannel)}><img className='profile-pic' src='https://lh3.googleusercontent.com/7_oM7ibjp1PjE402kQH7lxQmWuG2yIS0UsUAqgMMMmxNLXBq3TBOExoEjtbDJvMzC-zYCexs-PmSDO3z_mJkKp3Vww1Yny7fu1sGgjQOUDUttxtOyjXkPplmbFI2OonypQSIQetgDwmWpZBWRKq2VZpSPk5VjwixJXnBDsHLWXHGMslp3_VmujDwHnxwObmVAZKDMnwSKf5-dP_Hp8yMfN9grV_mvRC059wacl6iQGVWPinFNBCzICKk7fAOHE7gSb4eHie2alaFMhD8M0RtjWARA3KzBpp66SdlzK-855UiN8ion9o5zIfGizgnzP3C_pzYkNFtn3-D1nqZaQKPIg2v9O4-j7iYI8qH5e69dRiKPZidIRrbf6URSdQLPF0egcnr_jDsCECi7bY3a2IS3YA3NcMqQKogxyMWSa0Bedn_8_DRCD2AgHaCTAhmh1QRRK0nAKrswx1YWgozdGMPuxdFS9UnbBPVh5fGtURFY_evyvcBEzVD8QNMg3rVvw3RiiJsf0Gy0k7QpEq-iRX_Na4VaRC-OYnf9pbOhwp0Ndou7Z3jBFaTirqkOgxFQe51JD0tP8zHSpveqtd5VVkWkCcXZQS4ulpNiEqOBWC-pF4Ed2Sg1U_sMjNbpJbkOFl7=s892-no'
+                    alt='SlackSloth'
+                    height='36'
+                    width='36'/>{privateChannel.name}</li>);
     });
     let usernamesToList = this.state.selectedUsers.map((user, i) => {
-      return (<div key={i} className='private-channel-form-selected-user-tag' onClick={this.removeSelected(user)}>{user.username}</div>);
+      return (<span key={i} className='private-channel-form-selected-user-tag' onClick={this.removeSelected(user)}>{user.username}</span>);
     });
     // if (this.state.selectedUsers.length > 0) {
     //   usernamesToList = this.state.selectedUsers.;

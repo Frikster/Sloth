@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import Dropdown from './dropdown';
+import ClickOutHandler from 'react-onclickout';
 
 class ChannelList extends React.Component {
 
@@ -18,12 +19,38 @@ class ChannelList extends React.Component {
     this.handleCreateNewPrivateChannelSubmit = this.handleCreateNewPrivateChannelSubmit.bind(this);
     this.handleChannelClick = this.handleChannelClick.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.onClickOut = this.onClickOut.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchChannels();
     this.props.fetchUserChannels();
+    // document.body.addEventListener('click', this.handleClickOutside);
+
   }
+
+  componentWillUnmount() {
+    // document.body.removeEventListener('click', this.handleClickOutside);
+  }
+
+  handleClickOutside(e) {
+    // Source: https://stackoverflow.com/a/41652791
+    const {container} = this.refs; // get container that we'll wait to be clicked outside
+    const {onClickOutside} = this.props; // get click outside callback
+    const {target} = event; // get direct click event target
+
+    // if there is no proper callback - no point of checking
+    if (typeof onClickOutside !== 'function') {
+      return;
+    }
+
+    // if target is container - container was not clicked outside
+    // if container contains clicked target - click was not outside of it
+    if (target !== container && !container.contains(target)) {
+      onClickOutside(event); // clicked outside - fire callback
+    }
+  };
 
   createNewChannel(e) {
     this.setState({
@@ -66,6 +93,16 @@ class ChannelList extends React.Component {
     this.setState({dropdownOpen: !this.state.dropdownOpen});
   }
 
+  closeDropdown(e) {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      this.setState({dropdownOpen: false});
+    }
+  }
+
+  onClickOut(e) {
+    this.setState({dropdownOpen: false});
+  }
+
   render() {
     // console.log(this.props.channels);
     const publicChannelNames = this.props.channels.filter(channel => !channel.direct_message_channel).map((channel, i) => {
@@ -81,7 +118,9 @@ class ChannelList extends React.Component {
 
     let dropdown;
     if (this.state.dropdownOpen === true) {
-      dropdown = <Dropdown currentUser={this.props.currentUser} logout={this.props.logout}/>;
+      dropdown =  (<ClickOutHandler onClickOut={this.onClickOut}>
+                    <Dropdown currentUser={this.props.currentUser} logout={this.props.logout}/>
+                  </ClickOutHandler>);
     } else {
       dropdown = undefined;
     }
@@ -142,7 +181,7 @@ class ChannelList extends React.Component {
           <ul className='channel-header-username'>
             <li>{this.props.currentUser.username}</li>
           </ul>
-          {dropdown}
+            {dropdown}
         </div>
 
 

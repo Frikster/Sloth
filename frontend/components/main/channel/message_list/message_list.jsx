@@ -40,7 +40,6 @@ class MessageList extends React.Component {
     // if (userBlockArrs.length > 0) {debugger;}
     let res = userBlockArrs.map(userBlock => {
       const author_id = this.props.users[userBlock[0].author_id].username;
-      debugger
       let created_at = new Date(userBlock[0].created_at);
       created_at = created_at.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
 
