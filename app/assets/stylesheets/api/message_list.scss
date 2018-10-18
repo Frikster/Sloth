@@ -30,3 +30,46 @@
 .chat-logs h1 {
   margin-top: 325px;
 }
+
+.chat-author {
+  font-weight: bold;
+}
+
+.chat-message, .chat-message-first {
+  margin-top: 8px;
+}
+
+.chat-message
+{
+  margin-left: 52px;
+}
+
+.chat-message-header {
+  display: flex;
+  flex-direction: row;
+  // margin-bottom: 8px;
+}
+
+.chat-message-header > div {
+  margin-left: 8px;
+}
+
+.chat-author-and-created-at-container span {
+
+}
+
+.profile-pic {
+  border-radius: 8px;
+}
+
+.chat-section {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-left: 20px;
+}
+
+.chat-created-at {
+  margin-left: 5px;
+  color: gray;
+  font-size: 11px;
+}
