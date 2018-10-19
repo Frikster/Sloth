@@ -11,11 +11,8 @@ import {
   HashRouter
 } from 'react-router-dom';
 import {AuthRoute, ProtectedRoute, ProtectedChannelRoute} from '../util/route_util';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 import Modal from './modal/modal';
 
-library.add(faStroopwafel);
 // import { Provider } from 'react-redux';
 
 const App = () => (
