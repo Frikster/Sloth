@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MessageFormContainer from './message_form/message_form_container';
 import ChannelHeaderContainer from './channel_header/channel_header_container';
 import MessageListContainer from './message_list/message_list_container';

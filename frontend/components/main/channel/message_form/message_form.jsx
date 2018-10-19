@@ -1,7 +1,6 @@
 // jscs:disable maximumLineLength
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 // import MessageListContainer from './message_list/message_list_container';
 
@@ -26,7 +25,12 @@ class MessageForm extends React.Component {
   }
 
   createSocket() {
-    let cable = ActionCable.createConsumer('wss://app-academy-sloth.herokuapp.com/cable');
+    let cable;
+    if (process.env.NODE_ENV !== 'production') {
+      cable = Cable.createConsumer('http://localhost:3000/cable');
+    } else {
+      cable = Cable.createConsumer('wss://app-academy-sloth.herokuapp.com/cable');
+    }
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
