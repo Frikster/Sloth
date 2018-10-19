@@ -8,14 +8,14 @@
 
 ### Coming Soon
 
-Gifs of working features for this production README once the site is worth looking at
+Gifs of working features for this production README will be added once the following feature set is complete:
 
 1. Workspaces
 2. Workspace merging
 3. Workspace unmerging
 4. Channel merging
 5. Channel unmerging
-
+6. User profile pictures and ability to add images/gifs to channels
 
 
 
