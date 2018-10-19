@@ -1,6 +1,6 @@
 .channel-header {
-  padding-bottom: 20px;
-  padding-left: 10px;
+  padding-bottom: 8px;
+  padding-left: 20px;
   border-bottom: solid lightgray;
   border-width: thin;
   display: block;
@@ -8,4 +8,15 @@
 
 .channel-header h1{
   font-size: 16px;
+  margin-bottom: 2.5px;;
+}
+
+.channel-header-numUsers-and-icon {
+  margin-left: 1px;
+  color: gray;
+  font-size: 13px;
+}
+
+.channel-header-numUsers {
+  margin-left: 5px;
 }

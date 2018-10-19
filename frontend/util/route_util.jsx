@@ -37,9 +37,7 @@ class Protected extends React.Component {
   }
 
   ProtectedChannel({component: Component, path, exact, match}, channelIds) {
-    // debugger
     return <Route path={path} exact={exact} render={(props) => {
-      // debugger
       return (channelIds.includes(props.match.params.channelId) ? (
         <Component {...props} />
       ) : (
