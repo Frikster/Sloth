@@ -36,13 +36,14 @@ class PublicChannelForm extends React.Component {
   render() {
 
     return (
-      <div>
-        <h1>Create New Channel</h1>
+      <div className='public-channel-form-div'>
+        <h1>Create a Channel</h1>
         <form onSubmit={this.handleCreateNewPublicChannelSubmit}>
           <input
             type='text'
             value={this.state.newChannelName}
-            onChange={this.update('newChannelName')}/>
+            onChange={this.update('newChannelName')}
+            placeholder='# e.g. leads'/>
           <input type='submit' value='GO'/>
         </form>
       </div>

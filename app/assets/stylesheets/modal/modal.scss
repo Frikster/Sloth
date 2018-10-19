@@ -9,19 +9,20 @@
 }
 
 .modal-child {
-  width: 500px;
+  width: 700px;
   margin:auto;
 }
 
-// .private-channel-form-div {
-//   ;
-// }
-//
-// .private-channel-form-div form {
-//   position: relative;
-// } TODO: TA.
+.public-channel-form-div form {
+  display: flex;
+  flex-direction: row;
+}
 
-.private-channel-name-input ,.private-channel-user-input {
+.public-channel-form-div input[type='text'] {
+
+}
+
+.private-channel-name-input, .private-channel-user-input, .public-channel-form-div input[type='text'], .public-channel-search-input {
   font-size: 20px;
   padding: 15px;
   margin: 5px;
@@ -42,7 +43,7 @@
   margin-bottom: 20px;
 }
 
-.private-channel-user-input-div input[type='submit'] {
+.private-channel-user-input-div input[type='submit'], .public-channel-form-div input[type='submit'] {
   border: none;
   font-size: 20px;
   padding: 15px;
@@ -62,23 +63,67 @@
   top: 35px;
   color: gray;
   font-weight: 400;
+  padding: 10px 20px;
 }
 
-.close-modal-x:hover {
+.close-modal-x h1:hover {
   background-color: lightgray;
-  border-radius: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.private-channel-form-privateChannel-ul {
+.private-channel-form-privateChannel-ul, .join-channel-form-publicChannel-ul {
   height: 500px;
   overflow-y: scroll;
 }
 
-.private-channel-form-privateChannel-ul li {
+.private-channel-form-privateChannel-ul li, .join-channel-form-publicChannel-ul li {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.private-channel-form-privateChannel-ul div, .join-channel-form-publicChannel-ul div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border-top: thin solid lightgray;
-  padding: 25px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.private-channel-form-privateChannel-ul div:hover, .join-channel-form-publicChannel-ul div:hover {
+  cursor: pointer;
+  background-color: rgb(234, 245, 252);
+  border: thin solid rgb(203, 231, 247);
 }
 
 .private-channel-form-selected-user-tag {
+  color: white;
   background-color: #2d9ee0;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 3px;
 }
+
+.private-channel-form-selected-user-tag:hover {
+  cursor: pointer;
+}
+
+.profile-pic-in-tag {
+  border-radius: 3px;
+}
+
+.private-channel-form-selected-user-tag-username {
+  font-weight: bold;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.usernamesToList-div {
+  // display: flex;
+  // align-items: center;
+}
+
+// .private-channel-form-div {
+//   max-width: 100%;
+// }

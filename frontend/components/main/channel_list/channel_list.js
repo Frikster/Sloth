@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 import Dropdown from './dropdown';
 import ClickOutHandler from 'react-onclickout';
 
+import Draggable from 'react-draggable'; // The default
+import {DraggableCore} from 'react-draggable'; // <DraggableCore>
+
 class ChannelList extends React.Component {
 
   constructor(props) {
@@ -20,6 +23,7 @@ class ChannelList extends React.Component {
     this.showDropdown = this.showDropdown.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.onClickOut = this.onClickOut.bind(this);
+    this.handleStopDrag = this.handleStopDrag.bind(this);
   }
 
   componentDidMount() {
@@ -102,18 +106,32 @@ class ChannelList extends React.Component {
     this.setState({dropdownOpen: false});
   }
 
+  handleStopDrag(e) {
+    // debugger
+  }
+
   render() {
     // console.log(this.props.channels);
-    const publicChannelNames = this.props.channels.filter(channel => !channel.direct_message_channel).map((channel, i) => {
-      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
-    });
+    const divStyle = {
+      backgroundColor: 'rgb(76, 150, 137)'
+    };
 
-    const privateChannelNames = this.props.channels.filter(channel => channel.direct_message_channel).map((channel, i) => {
+    const publicChannelNames = this.props.channels.filter(((channel) => !channel.direct_message_channel), this).map(((channel, i) => {
+      if (channel.id.toString() === this.props.match.params.channelId) {
+        return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li></Draggable>);
+      }
+      return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
+    }), this);
+
+    const privateChannelNames = this.props.channels.filter((channel => channel.direct_message_channel), this).map(((channel, i) => {
       let noCurrentUserName = channel.name.replace(this.props.currentUser.username, '');
       if (noCurrentUserName === '') {noCurrentUserName = channel.name;}
       noCurrentUserName = noCurrentUserName.replace(/(^[,\s]+)|([,\s]+$)/g, ''); //remove trailing commas/whitespaces
+      if (channel.id.toString() === this.props.match.params.channelId) {
+        return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li></Draggable>);
+      }
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
-    });
+    }), this);
 
     let dropdown;
     if (this.state.dropdownOpen === true) {

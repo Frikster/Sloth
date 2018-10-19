@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.public-channels-list li, .private-channels-list li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .public-channels-list li::before {
   content: "# ";
 }
@@ -9,6 +14,8 @@
 .private-channels-list li::before {
   content: "# ";
 }
+
+
 
 .fa-plus-circle:hover {
   color: white;
@@ -21,6 +28,11 @@
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.channel-list-plus-circle p:hover {
+  color: white;
+  cursor: pointer;
 }
 
 .channel-all {

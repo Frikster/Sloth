@@ -17,7 +17,7 @@ class ChannelHeader extends React.Component {
     return (
       <div className='channel-header'>
         <h1>{channelName}</h1>
-        <span className='channel-header-numUsers-and-icon'><i class="far fa-user"></i><span className='channel-header-numUsers'>{this.props.numUsers}</span></span>
+        <span className='channel-header-numUsers-and-icon'><i className="far fa-user"></i><span className='channel-header-numUsers'>{this.props.numUsers}</span></span>
       </div>
     );
   }
