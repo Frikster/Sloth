@@ -118,7 +118,8 @@ class ChannelList extends React.Component {
 
     const publicChannelNames = this.props.channels.filter(((channel) => !channel.direct_message_channel), this).map(((channel, i) => {
       if (channel.id.toString() === this.props.match.params.channelId) {
-        return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li></Draggable>);
+        // return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li></Draggable>);
+        return (<li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
       }
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
     }), this);
