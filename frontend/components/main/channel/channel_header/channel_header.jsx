@@ -13,13 +13,16 @@ class ChannelHeader extends React.Component {
     if (this.props.channel) {
       channelName = this.props.channel.name;
     }
-
-    return (
-      <div className='channel-header'>
+    
+    return <div className="channel-header">
         <h1>{channelName}</h1>
-        <span className='channel-header-numUsers-and-icon'><i className="far fa-user"></i><span className='channel-header-numUsers'>{this.props.numUsers}</span></span>
-      </div>
-    );
+        <span className="channel-header-numUsers-and-icon">
+          <i className="far fa-user" />
+          <span className="channel-header-numUsers">
+            {this.props.numUsers(this.props.match.params.channelId)}
+          </span>
+        </span>
+      </div>;
   }
 }
 
