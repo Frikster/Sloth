@@ -19,7 +19,8 @@
 
 .dropdown li {
   color: #2c2d30;
-  // padding: 5px;
+  padding: 5px;
+  padding-left: 35px;
 }
 
 .dropdown h3 {
@@ -31,4 +32,33 @@
   display: flex;
   flex-direction: row;
   margin: 16px 24px 8px 16px
+}
+
+.dropdown-header2 {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 24px 8px 16px;
+}
+
+.dropdown-header2 h3 {
+  padding-top: 0;
+    margin-bottom: 0;
+}
+
+.dropdown-header2 p {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 11px;
+}
+
+.dropdown-dummy {
+  cursor: not-allowed! important;
+}
+
+.dropdown-dummy b {
+    color: black;
+}
+
+.dropdown-signout b {
+  color: black;
 }
