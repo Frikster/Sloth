@@ -129,7 +129,8 @@ class ChannelList extends React.Component {
       if (noCurrentUserName === '') {noCurrentUserName = channel.name;}
       noCurrentUserName = noCurrentUserName.replace(/(^[,\s]+)|([,\s]+$)/g, ''); //remove trailing commas/whitespaces
       if (channel.id.toString() === this.props.match.params.channelId) {
-        return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li></Draggable>);
+        // return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li></Draggable>);
+        return (<li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
       }
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
     }), this);
