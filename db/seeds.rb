@@ -10,17 +10,17 @@ User.destroy_all
 UserChannel.destroy_all
 ChatMessage.destroy_all
 
-Channel.create!(name: 'General', direct_message_channel: false)
+general = Channel.create!(name: 'General', direct_message_channel: false)
 
 andy = User.create!(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456')
 andy_direct = Channel.create!(name: andy.username, direct_message_channel: true, author_id: andy.id)
 UserChannel.create!(user_id: andy.id, channel_id: andy_direct.id)
-UserChannel.create!(user_id: andy.id, channel_id: 1)
+UserChannel.create!(user_id: andy.id, channel_id: general.id)
 
 dirk = User.create!(email: 'you@example.com', username:'Dirk', password: '123456')
 dirk_direct = Channel.create!(name: dirk.username, direct_message_channel: true, author_id: dirk.id)
 UserChannel.create!(user_id: dirk.id, channel_id: dirk_direct.id)
-UserChannel.create!(user_id: dirk.id, channel_id: 1)
+UserChannel.create!(user_id: dirk.id, channel_id: general.id)
 
 dirk_andy = Channel.create!(name: dirk.username + ', ' + andy.username, direct_message_channel: true)
 UserChannel.create!(user_id: andy.id, channel_id: dirk_andy.id)
