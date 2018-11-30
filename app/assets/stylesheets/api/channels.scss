@@ -5,6 +5,9 @@
 .public-channels-list li, .private-channels-list li {
   padding-top: 5px;
   padding-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .public-channels-list li::before {
