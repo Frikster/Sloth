@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.username = @user.email[/^(.*)(@)/, 1]
+    @user.username = @user.email[/^(.*)(@)/, 1].capitalize
     if @user.save
       @channel = Channel.first
       setup_direct_channels
