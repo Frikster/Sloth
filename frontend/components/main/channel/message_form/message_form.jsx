@@ -68,8 +68,41 @@ class MessageForm extends React.Component {
 
   handleChatInputKeyPress(event) {
     if (event.key === 'Enter') {
-      this.handleSendEvent(event);
+      if(!this.state.imageFile) {
+        this.handleSendEvent(event);
+      } else {
+        this.handleImageUpload(event);
+      }
     }
+  }
+
+  handleImageSubmit(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+  }
+
+  handleImageUpload(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("message[title]", 'test');
+    if (this.state.imageFile) {
+      formData.append("message[body]", this.state.imageFile);
+    }
+    $.ajax({
+      url: '/api/messages',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
+    });
   }
 
   renderChatLog() {
@@ -97,6 +130,11 @@ class MessageForm extends React.Component {
       channelName = this.props.channel.name;
     }
 
+    let imgPreview = <div></div>;
+    if (this.state.imageFile) {
+      imgPreview = <img src={`${this.state.imageUrl}`} alt="Oh noes!" />;
+    }
+
     return (
       <div>
         <div className='chat-stage'>
@@ -110,7 +148,15 @@ class MessageForm extends React.Component {
               type='text'
               placeholder={'Message #' + channelName}
               className='chat-input' />
+            <input onChange={(e) => this.handleImageSubmit(e)} type="file" name="pic" accept="image/*" />
+            
+            
+            {/* <form onSubmit={(e) => this.handleImageSubmit(e)}>
+              <input type="file" name="pic" accept="image/*"/>
+              <input type="submit"/>
+            </form> */}
           </div>
+          {imgPreview}
         </div>
       </div>
     );

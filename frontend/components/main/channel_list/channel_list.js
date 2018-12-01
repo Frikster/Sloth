@@ -30,7 +30,6 @@ class ChannelList extends React.Component {
     this.props.fetchChannels();
     this.props.fetchUserChannels();
     // document.body.addEventListener('click', this.handleClickOutside);
-
   }
 
   componentWillUnmount() {

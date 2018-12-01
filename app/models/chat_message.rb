@@ -16,6 +16,7 @@ class ChatMessage < ApplicationRecord
   end
 
   validates :author_id, :channel_id, :content, presence: true
+  has_one_attached :photo
 
   belongs_to :channel,
   class_name: :User,
