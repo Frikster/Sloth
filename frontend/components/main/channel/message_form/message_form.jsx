@@ -54,6 +54,13 @@ class MessageForm extends React.Component {
 
   handleSendEvent(event) {
     event.preventDefault();
+
+    const formData = new FormData();
+    // formData.append("message[title]", 'test');
+    if (this.state.imageFile) {
+      formData.append("message[photo]", this.state.imageUrl);
+    }
+
     this.chats.create(
       // this.props.createMessage, TODO: How to add chat to state??
       this.state.currentChatMessage,
@@ -68,9 +75,8 @@ class MessageForm extends React.Component {
 
   handleChatInputKeyPress(event) {
     if (event.key === 'Enter') {
-      if(!this.state.imageFile) {
-        this.handleSendEvent(event);
-      } else {
+      this.handleSendEvent(event);
+      if (this.state.imageUrl != '') {
         this.handleImageUpload(event);
       }
     }
@@ -92,10 +98,15 @@ class MessageForm extends React.Component {
   handleImageUpload(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("message[title]", 'test');
+    // formData.append("message[title]", 'test');
     if (this.state.imageFile) {
-      formData.append("message[body]", this.state.imageFile);
+      formData.append("message[photo]", this.state.imageUrl);
     }
+
+    // this.chats.photo.attach(io: file, filename: 'sennacy.jpg')
+
+    // this.chats.create(this.state.imageUrl, this.props.currentUser.id, this.props.channel.id);
+
     $.ajax({
       url: '/api/messages',
       method: 'POST',
@@ -132,7 +143,7 @@ class MessageForm extends React.Component {
 
     let imgPreview = <div></div>;
     if (this.state.imageFile) {
-      imgPreview = <img src={`${this.state.imageUrl}`} alt="Oh noes!" />;
+      imgPreview = <img src={`${this.state.imageUrl}`} alt="Oh noes!" width="42" />;
     }
 
     return (
