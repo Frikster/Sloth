@@ -25,7 +25,7 @@ class MessageList extends React.Component {
     // console.log('source' + source)
     let userBlockArrs = [];
     let userBlockArr = [];
-
+    debugger;
     // if (source.length > 0) {debugger;}
     source.forEach(message => {
       if (userBlockArr.length === 0) {userBlockArr.push(message);
@@ -43,10 +43,17 @@ class MessageList extends React.Component {
       let created_at = new Date(userBlock[0].created_at);
       created_at = created_at.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
 
-      const first_message = userBlock[0].content;
-      debugger;
+      debugger
+      if (userBlock[0].content) {
+        const first_message = userBlock[0].content;
+      } else {
+        const first_message = <img src={userBlock[0].image_url} />;
+      }
+
       const rest_messages = userBlock.slice(1).map(msg => {
-        return (<div key={`chat_${msg.id}`} className='chat-message'>{msg.content}</div>);
+        return <div key={`chat_${msg.id}`} className="chat-message">
+          {msg.content ? msg.content : <img src={msg.image_url} />}
+          </div>;
       });
       return (
         <section key={`section_${userBlock[0].id}`} className='chat-section'>

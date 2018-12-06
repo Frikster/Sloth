@@ -17,11 +17,14 @@ class ChatChannel < ApplicationCable::Channel
   # end
 
   def create(opts)
-    ChatMessage.create(
+    chat = ChatMessage.create(
       content: opts.fetch('content'),
       author_id: opts.fetch('author_id'),
-      channel_id: opts.fetch('channel_id')
+      channel_id: opts.fetch('channel_id'),
     )
+    # debugger
+    # url = opts.fetch('image_url')
+    # chat.photo.attach(io: file, filename: file.name) //TODO: How to attatch url image?
     # debugger
   end
 end

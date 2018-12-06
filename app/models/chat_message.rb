@@ -15,8 +15,15 @@ class ChatMessage < ApplicationRecord
     ChatMessageCreationEventBroadcastJob.perform_later(self)
   end
 
-  validates :author_id, :channel_id, :content, presence: true
   has_one_attached :photo
+  validates :author_id, :channel_id, presence: true
+  validate :validate_content
+
+  def validate_content 
+    unless self.content || self.photo.attached?
+      errors[:photo] << "must be attached for body to be nil"
+    end
+  end
 
   belongs_to :channel,
   class_name: :User,
