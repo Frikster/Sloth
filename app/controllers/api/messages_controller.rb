@@ -10,6 +10,9 @@ class Api::MessagesController < ApplicationController
   def create
     @message = ChatMessage.new(message_params)
     @message.author_id = current_user.id
+    if @message.photo.attached?
+      @message.image_url = url_for(@message.photo)
+    end
     if @message.save
       render "api/messages/show"
     else

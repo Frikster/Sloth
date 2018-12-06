@@ -42,11 +42,13 @@ class MessageForm extends React.Component {
         // chatLogs.push(data);
         // setState({chatLogs: chatLogs});
       },
-      create: function(chatContent, authorId, channelId) {
-        this.perform('create', {
+        create: function (chatContent, authorId, channelId, imageUrl, formData) {
+        this.perform("create", {
           content: chatContent,
           author_id: authorId,
-          channel_id: channelId
+          channel_id: channelId,
+          image_url: imageUrl,
+          form_data: formData
         });
       }
     });
@@ -55,12 +57,10 @@ class MessageForm extends React.Component {
   handleSendEvent(event) {
     event.preventDefault();
 
-    const formData = new FormData();
-    // formData.append("message[title]", 'test');
+    let formData = new FormData();
     if (this.state.imageFile) {
-      formData.append("message[photo]", this.state.imageUrl);
+      formData.append("photo", this.state.imageFile);
     }
-
     this.chats.create(
       // this.props.createMessage, TODO: How to add chat to state??
       this.state.currentChatMessage,
@@ -69,29 +69,28 @@ class MessageForm extends React.Component {
     this.setState({
       currentChatMessage: ''
     });
-    // console.log('FORM STATE CHANGE')
-    // console.log(this.state)
+
+    if (this.state.imageFile) {
+      let formData = new FormData();
+      formData.append("message[photo]", this.state.imageFile);
+      formData.append("message[channel_id]", this.props.channel.id);
+      $.ajax({
+        url: '/api/messages',
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false
+      });
+    }
+
   }
 
   handleChatInputKeyPress(event) {
     if (event.key === 'Enter') {
       this.handleSendEvent(event);
       if (this.state.imageUrl != '') {
-        this.handleImageUpload(event);
+        // this.handleImageUpload(event);
       }
-    }
-  }
-
-  handleImageSubmit(e) {
-    const reader = new FileReader();
-    const file = e.currentTarget.files[0];
-    reader.onloadend = () =>
-      this.setState({ imageUrl: reader.result, imageFile: file });
-
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      this.setState({ imageUrl: "", imageFile: null });
     }
   }
 
@@ -100,20 +99,32 @@ class MessageForm extends React.Component {
     const formData = new FormData();
     // formData.append("message[title]", 'test');
     if (this.state.imageFile) {
-      formData.append("message[photo]", this.state.imageUrl);
+      formData.append("photo", this.state.imageFile);
     }
 
     // this.chats.photo.attach(io: file, filename: 'sennacy.jpg')
 
     // this.chats.create(this.state.imageUrl, this.props.currentUser.id, this.props.channel.id);
 
-    $.ajax({
-      url: '/api/messages',
-      method: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false
-    });
+    // $.ajax({
+    //   url: '/api/messages',
+    //   method: 'POST',
+    //   data: formData,
+    //   contentType: false,
+    //   processData: false
+    // });
+  }
+
+  handleImageSubmit(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file });
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
   }
 
   renderChatLog() {
