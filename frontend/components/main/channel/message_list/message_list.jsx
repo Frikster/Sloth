@@ -9,15 +9,35 @@ class MessageList extends React.Component {
     this.props.fetchMessages();
     this.props.fetchUsers();
     this.scrollToBottom();
+    // const messages = this.props.getChannelMessages; //TODO: this can be done more efficiently
+    // if (messages.length > 0 && messages[messages.length - 1].image_url) {
+    //   this.lastElIsImage = true;
+    // }
+    // this.scrollToBottom();
   }
 
   componentDidUpdate() {
-    this.scrollToBottom();
+    const messages = this.props.getChannelMessages; //TODO: this can be done more efficiently
+    if (messages.length > 0) {
+      const chatHtml = document.getElementById(`chat_${messages[messages.length - 1].id}`)
+      if (chatHtml && messages[messages.length - 1].image_url) {
+        chatHtml.scrollIntoView({ behavior: "auto", inline: "center" });
+        
+        // setTimeout(function(that) {
+        //     that.el.scrollIntoView({ behavior: "auto" });
+        //   }, 3000, this);
+      } else {
+        this.scrollToBottom();
+      }
+    } else {
+      this.scrollToBottom();
+    }
   }
 
   constructor(props) {
     super(props);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    // this.lastElIsImage = false;
   }
 
   renderChatLog(source) {
@@ -51,10 +71,11 @@ class MessageList extends React.Component {
       }
 
       const rest_messages = userBlock.slice(1).map(msg => {
-        return <div key={`chat_${msg.id}`} className="chat-message">
-          {msg.content ? msg.content : <img src={msg.image_url} />}
+        return <div key={`chat_${msg.id}`} id={`chat_${msg.id}`} className="chat-message">
+            {msg.content ? msg.content : <img src={msg.image_url} />}
           </div>;
       });
+
       return (
         <section key={`section_${userBlock[0].id}`} className='chat-section'>
           <div className='chat-message-header'>
@@ -90,7 +111,12 @@ class MessageList extends React.Component {
   }
 
   scrollToBottom() {
-    this.el.scrollIntoView({behavior: 'smooth'});
+    this.el.scrollIntoView({ behavior: "smooth" });
+    // if (this.lastElIsImage) {
+    //   this.el.scrollIntoView({ behavior: 'auto' });
+    // } else {
+    //   this.el.scrollIntoView({ behavior: 'smooth' });
+    // }
   }
 
   render() {

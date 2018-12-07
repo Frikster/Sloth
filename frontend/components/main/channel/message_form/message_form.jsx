@@ -80,7 +80,10 @@ class MessageForm extends React.Component {
         data: formData,
         contentType: false,
         processData: false
+      }).then((res) => {
+        this.props.history.push("/channels/" + res.channel_id);
       });
+      this.setState({ imageUrl: "", imageFile: null });
     }
 
   }
