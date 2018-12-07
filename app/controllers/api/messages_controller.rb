@@ -15,6 +15,7 @@ class Api::MessagesController < ApplicationController
       @message.image_url = url_for(@message.photo)
     end
     if @message.save
+      ActionCable.server.broadcast "chat_channel", {image_url: @message.image_url, channel_id: @message.channel_id}
       render "api/messages/show"
     else
       render json: @message.errors.full_messages, status: 422

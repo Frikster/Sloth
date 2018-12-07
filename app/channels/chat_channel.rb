@@ -22,9 +22,19 @@ class ChatChannel < ApplicationCable::Channel
       author_id: opts.fetch('author_id'),
       channel_id: opts.fetch('channel_id'),
     )
+
+    # debugger
+    # this.props.history.push("/channels/" + res.channel_id);
+
     # debugger
     # url = opts.fetch('image_url')
     # chat.photo.attach(io: file, filename: file.name) //TODO: How to attatch url image?
     # debugger
   end
+
+  # def send_url(opts) 
+  #   debugger
+  #   ActionCable.server.broadcast "chat_channel", image_url: opts.fetch('image_url')
+  # end
+
 end

@@ -43,14 +43,19 @@ class MessageForm extends React.Component {
         // setState({chatLogs: chatLogs});
       },
         create: function (chatContent, authorId, channelId, imageUrl, formData) {
-        this.perform("create", {
-          content: chatContent,
-          author_id: authorId,
-          channel_id: channelId,
-          image_url: imageUrl,
-          form_data: formData
-        });
-      }
+          this.perform("create", {
+            content: chatContent,
+            author_id: authorId,
+            channel_id: channelId,
+            image_url: imageUrl,
+            form_data: formData
+          });
+      },
+        send_url: function (imageUrl) {
+          this.perform("send_url", {
+            image_url: imageUrl
+          });
+        },
     });
   }
 
@@ -81,7 +86,8 @@ class MessageForm extends React.Component {
         contentType: false,
         processData: false
       }).then((res) => {
-        this.props.history.push("/channels/" + res.channel_id);
+        // this.chats.send_url(res.message.image_url);
+        this.props.history.push("/channels/" + res.channel_id); // I'm ashamed of this code
       });
       this.setState({ imageUrl: "", imageFile: null });
     }

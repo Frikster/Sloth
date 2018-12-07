@@ -65,6 +65,18 @@ class MessageList extends React.Component {
   renderChatLog(source) {
     // console.log('renderChatLog')
     // console.log('source' + source)
+    let received_image_url = '';
+    // if (source.length > 0) {
+    //   debugger;
+    // }
+    if (source.length > 0 && Object.keys(source[source.length - 1]).length === 2 && Object.keys(source[source.length - 1])[0] === "image_url") {
+      received_image_url = source[source.length - 1].image_url;
+      source.pop();
+      if (source[source.length - 1].content != "" && !source[source.length - 1].image_url && !source[source.length - 1].content) {
+        source[source.length - 1].image_url = received_image_url;
+      }
+    }
+
     let userBlockArrs = [];
     let userBlockArr = [];
     // debugger;
