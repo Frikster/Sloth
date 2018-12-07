@@ -47,7 +47,7 @@ class MessageList extends React.Component {
     super(props);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.state = { finalImageStatus: "loading or nonexistent" };
-    this.messages = this.props.getChannelMessages;
+    // this.messages = this.props.getChannelMessages;
     // this.lastElIsImage = false;
   }
 
@@ -81,6 +81,7 @@ class MessageList extends React.Component {
     let userBlockArr = [];
     // debugger;
     // if (source.length > 0) {debugger;}
+    this.messages = source;
     source.forEach(message => {
       if (userBlockArr.length === 0) {
         userBlockArr.push(message);

@@ -87,7 +87,7 @@ class MessageForm extends React.Component {
         processData: false
       }).then((res) => {
         // this.chats.send_url(res.message.image_url);
-        this.props.history.push("/channels/" + res.channel_id); // I'm ashamed of this code
+        this.props.history.push("/channels/" + res.message.channel_id); // I'm ashamed of this code
       });
       this.setState({ imageUrl: "", imageFile: null });
     }
