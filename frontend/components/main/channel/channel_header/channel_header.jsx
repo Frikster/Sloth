@@ -22,6 +22,10 @@ class ChannelHeader extends React.Component {
             {this.props.numUsers(this.props.match.params.channelId)}
           </span>
         </span>
+        {/* These are just too damn ugly */}
+        {/* <i className="fas fa-info-circle" />
+        <i className="fas fa-cog" />
+        <input type="text" name="DummySearch" value="&#xf002;" className="fas fa-search" /> */}
       </div>;
   }
 }

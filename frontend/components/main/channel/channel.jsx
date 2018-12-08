@@ -16,7 +16,9 @@ class Channel extends React.Component {
 
     return <div className="channel-main">
         <ChannelHeaderContainer />
-      <div className="channel-and-sidebar-div">
+        <MessageListContainer />
+        <MessageFormContainer />
+      {/* <div className="channel-and-sidebar-div">
           <div>
             <MessageListContainer />
             <MessageFormContainer />
@@ -24,7 +26,7 @@ class Channel extends React.Component {
           <div>
             <ProfilePicSidebarContainer />
           </div>
-        </div>
+        </div> */}
       </div>;
   }
 }

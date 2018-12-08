@@ -90,6 +90,7 @@ class MessageForm extends React.Component {
         this.props.history.push("/channels/" + res.message.channel_id); // I'm ashamed of this code
       });
       this.setState({ imageUrl: "", imageFile: null });
+      document.getElementById("message-form-hidden-file-upload").value = null;
     }
 
   }
@@ -134,6 +135,7 @@ class MessageForm extends React.Component {
     } else {
       this.setState({ imageUrl: "", imageFile: null });
     }
+    document.getElementById("message-form-chat-input").focus();
   }
 
   renderChatLog() {
@@ -147,6 +149,20 @@ class MessageForm extends React.Component {
         </li>
       );
     });
+  }
+
+  handlePlusClick() {
+    document.getElementById('message-form-hidden-file-upload').click();
+  }
+
+  handleChatInputFocus() {
+    document.getElementById("chat-input-plus-button").style.borderColor ='gray';
+    document.getElementById("chat-input-plus-button").style.color = 'gray';
+  }
+
+  handleChatInputBlur() {
+    document.getElementById("chat-input-plus-button").style.borderColor = 'lightgray';
+    document.getElementById("chat-input-plus-button").style.color = 'lightgray';
   }
 
   render() {
@@ -163,23 +179,26 @@ class MessageForm extends React.Component {
 
     let imgPreview = <div></div>;
     if (this.state.imageFile) {
-      imgPreview = <img src={`${this.state.imageUrl}`} alt="Oh noes!" width="42" />;
+      imgPreview = <img src={`${this.state.imageUrl}`} alt="Oh noes!" className='image-preview'/>;
     }
 
     return (
       <div>
         <div className='chat-stage'>
 
-
           <div className='chat-input-container'>
+            <h1 id='chat-input-plus-button' className='chat-input-plus-button' onClick={(e) => this.handlePlusClick(e)}>+</h1>
             <input
+              id='message-form-chat-input'
               onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
               value={ this.state.currentChatMessage }
               onChange={ (e) => this.updateCurrentChatMessage(e) }
               type='text'
               placeholder={'Message #' + channelName}
-              className='chat-input' />
-            <input onChange={(e) => this.handleImageSubmit(e)} type="file" name="pic" accept="image/*" />
+              className='chat-input'
+              onFocus={(e) => this.handleChatInputFocus(e)} 
+              onBlur={(e) => this.handleChatInputBlur(e)} />
+            <input id='message-form-hidden-file-upload' onChange={(e) => this.handleImageSubmit(e)} type="file" name="pic" accept="image/*" />
             
             
             {/* <form onSubmit={(e) => this.handleImageSubmit(e)}>

@@ -20,6 +20,11 @@ input {
   border-color: lightgray;
 }
 
+input:focus {
+  outline: none;
+  border-color: gray
+}
+
 label {
   display:block;
 }
