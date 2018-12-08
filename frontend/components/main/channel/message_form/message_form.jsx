@@ -163,6 +163,8 @@ class MessageForm extends React.Component {
   handleChatInputBlur() {
     document.getElementById("chat-input-plus-button").style.borderColor = 'lightgray';
     document.getElementById("chat-input-plus-button").style.color = 'lightgray';
+    this.setState({ imageUrl: "", imageFile: null });
+    document.getElementById("message-form-hidden-file-upload").value = null;
   }
 
   render() {
