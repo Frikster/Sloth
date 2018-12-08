@@ -18,9 +18,9 @@
   flex-direction: row;
 }
 
-.public-channel-form-div input[type='text'] {
+// .public-channel-form-div input[type='text'] {
 
-}
+// }
 
 .private-channel-name-input, .private-channel-user-input, .public-channel-form-div input[type='text'], .public-channel-search-input {
   font-size: 20px;
@@ -73,7 +73,7 @@
 }
 
 .private-channel-form-privateChannel-ul, .join-channel-form-publicChannel-ul {
-  height: 500px;
+  min-height: 0;
   overflow-y: scroll;
 }
 
@@ -124,6 +124,6 @@
   // align-items: center;
 }
 
-// .private-channel-form-div {
-//   max-width: 100%;
-// }
+.private-channel-form-div, .join-channel-form-div {
+  margin-top: 100px;
+}
