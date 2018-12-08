@@ -82,7 +82,7 @@
   font-size: 15px;
 }
 
-.private-channel-form-privateChannel-ul div, .join-channel-form-publicChannel-ul div {
+.private-channel-form-privateChannel-ul > div, .join-channel-form-publicChannel-ul > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -91,7 +91,7 @@
   border-radius: 5px;
 }
 
-.private-channel-form-privateChannel-ul div:hover, .join-channel-form-publicChannel-ul div:hover {
+.private-channel-form-privateChannel-ul > div:hover, .join-channel-form-publicChannel-ul > div:hover {
   cursor: pointer;
   background-color: rgb(234, 245, 252);
   border: thin solid rgb(203, 231, 247);
