@@ -58,6 +58,8 @@ class MessageList extends React.Component {
         ); // Retrieves the id of the last message and returns the img tag if one exists
       if (lastChatImageHtml && lastChatImageHtml.width > 0 && lastChatImageHtml.height > 0) {
         this.setState({ finalImageStatus: "loaded" });
+      } else {
+        this.scrollToBottom();
       }
     }
   }
