@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Dropdown from './dropdown';
 import ClickOutHandler from 'react-onclickout';
 
+import { Swappable, Plugins } from '@shopify/draggable'; // this is the nice pretty one. Don't lose it again.
 import Draggable from 'react-draggable'; // The default
 import {DraggableCore} from 'react-draggable'; // <DraggableCore>
 
@@ -107,6 +108,7 @@ class ChannelList extends React.Component {
 
   handleStopDrag(e) {
     // debugger
+    this.props.openModal("merge_channels");
   }
 
   render() {
@@ -117,8 +119,17 @@ class ChannelList extends React.Component {
 
     const publicChannelNames = this.props.channels.filter(((channel) => !channel.direct_message_channel), this).map(((channel, i) => {
       if (channel.id.toString() === this.props.match.params.channelId) {
-        // return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li></Draggable>);
-        return (<li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
+        if (this.state.dropdownOpen){
+          return (<li style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
+
+        } else {
+          return <Draggable axis="y" onStop={this.handleStopDrag}>
+            <li style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}>
+                {" "}
+                {channel.name}{" "}
+              </li>
+            </Draggable>;
+        }
       }
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
     }), this);

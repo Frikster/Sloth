@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PublicChannelFormContainer from '../channel_form/public_channel_form_container';
 import PrivateChannelFormContainer from '../channel_form/private_channel_form_container';
 import JoinChannelFormContainer from '../channel_form/join_channel_form_container';
+import MergeChannelsFormContainer from "../channel_form/merge_channels_form_container";
 
 
 function Modal({modal, closeModal}) {
@@ -20,6 +21,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'join_channel':
       component = <JoinChannelFormContainer />;
+      break;
+    case 'merge_channels':
+      component = <MergeChannelsFormContainer />;
       break;
     default:
       return null;

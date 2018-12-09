@@ -21,6 +21,7 @@ const mdp = (dispatch) => {
     logout: () => logout()(dispatch),
     fetchChannels: () => dispatch(fetchChannels()),
     createChannel: (channel) => dispatch(createChannel(channel)),
+    mergeChannels: (channelDrag, channelDrop) => dispatch(), //TODO
     fetchUserChannels:  () => dispatch(fetchUserChannels()),
     openModal: modal => dispatch(openModal(modal))
   };

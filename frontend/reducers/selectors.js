@@ -32,3 +32,9 @@ export const getAllPublicChannels = ({entities}) => {
 export const getAllPrivateChannelsOfCurrentUser = (state) => {
   return getJoinedChannels(state).filter(channel => channel.direct_message_channel);
 }
+
+export const getMergedMessages = ({ entities }, channelName1, channelName2) => {
+  const mergedChannels = Object.values(entities.channels).filter(channel => channel.name === channelName1 || channel.name === channelName2);
+  const mergedChannelsIds = mergedChannels.map(channel => channel.id);
+  return Object.values(entities.messages).filter(message => message.channel_id.toString() === mergedChannelsIds[0].toString() || message.channel_id.toString() === mergedChannelsIds[1].toString());
+};
