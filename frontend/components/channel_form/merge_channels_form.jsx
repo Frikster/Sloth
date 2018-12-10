@@ -8,6 +8,30 @@ class MergeChannelsForm extends React.Component {
         this.props.fetchMessages();
         this.props.fetchChannels();
         this.props.fetchUserChannels();
+        this.messages = this.props.getMergedMessages(this.draggedChannel.innerText, this.toMergeWithChannel.innerText);
+        this.props.createChannel({ name: `Test${(1 + Math.random()) * 0x10000}`, direct_message_channel: false }).then((res) => {
+            this.messages.forEach(msg => {
+                this.props.createMessage({
+                  content: msg.content,
+                  channel_id: res.payload.channel.id,
+                  image_url: msg.image_url
+                });
+                // let file = open(msg.image_url); // https://stackoverflow.com/questions/2515931/how-can-i-download-a-file-from-a-url-and-save-it-in-rails/29743394#29743394
+                // debugger
+                // if(file) {
+                //     this.props.createMessage({
+                //     content: msg.content,
+                //     channel_id: res.payload.channel.id,
+                //     photo: file.read
+                //     });
+                // } else {
+                //     this.props.createMessage({
+                //         content: msg.content,
+                //         channel_id: res.payload.channel.id,
+                //     });
+                // }
+            });
+        });
     }
 
     constructor(props) {
@@ -74,8 +98,8 @@ class MergeChannelsForm extends React.Component {
         //         <li key={`public_channel_${publicChannel.id}`}>{publicChannel.name}</li>
         //     </div>);
         // });
-        const messages = this.props.getMergedMessages(this.draggedChannel.innerText, this.toMergeWithChannel.innerText);
-        debugger
+
+
         if(false) {
             this.props.closeModal();
             return <div></div>

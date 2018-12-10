@@ -5,7 +5,10 @@ import MergeChannelsForm from "./merge_channels_form";
 import { fetchChannels } from '../../actions/channel_actions';
 import { fetchMessages } from '../../actions/message_actions';
 import { createUserChannel, fetchUserChannels } from '../../actions/userChannel_actions';;
-import { getMergedMessages, getJoinedChannels } from "../../reducers/selectors";
+import { getMergedMessages, getChannelByName, getJoinedChannels } from "../../reducers/selectors";
+import { createChannel } from '../../actions/channel_actions';
+import { createMessage } from "../../actions/message_actions";
+// import { createMessage, receiveMessage } from '../../actions/message_actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -13,14 +16,14 @@ const mapStateToProps = (state) => {
         formType: 'merge_channels',
         currentUser: state.entities.users[state.session.id],
         getMergedMessages: (channelName1, channelName2) => getMergedMessages(state, channelName1, channelName2),
+        getChannelByName: (channelName) => getChannelByName(state, channelName)
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        processForm: (channelDrag, channelDrop) => {
-            return dispatch(mergeChannels(channelDrag, channelDrop));
-        }, //TODO
+        createChannel: (channel) => dispatch(createChannel(channel)),
+        createMessage: (message) => dispatch(createMessage(message)),
         closeModal: () => dispatch(closeModal()),
         fetchMessages: () => dispatch(fetchMessages()),
         fetchChannels: () => dispatch(fetchChannels()),

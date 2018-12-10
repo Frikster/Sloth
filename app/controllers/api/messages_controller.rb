@@ -11,7 +11,6 @@ class Api::MessagesController < ApplicationController
     @message = ChatMessage.new(message_params)
     @message.author_id = current_user.id
     if @message.photo.attached?
-      # debugger
       @message.image_url = url_for(@message.photo)
     end
     if @message.save
@@ -34,6 +33,6 @@ class Api::MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body, :channel_id, :photo)
+    params.require(:message).permit(:content, :channel_id, :photo, :image_url)
   end
 end

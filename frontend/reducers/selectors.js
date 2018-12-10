@@ -38,3 +38,7 @@ export const getMergedMessages = ({ entities }, channelName1, channelName2) => {
   const mergedChannelsIds = mergedChannels.map(channel => channel.id);
   return Object.values(entities.messages).filter(message => message.channel_id.toString() === mergedChannelsIds[0].toString() || message.channel_id.toString() === mergedChannelsIds[1].toString());
 };
+
+export const getChannelByName = ({ entities }, channelName) => {
+  return Object.values(entities.channels).filter(channel => channel.name === channelName);
+}; 
