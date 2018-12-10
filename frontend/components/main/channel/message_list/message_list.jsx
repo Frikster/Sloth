@@ -15,8 +15,11 @@ class MessageList extends React.Component {
     // this.scrollToBottom();
   }
 
-  componentDidUpdate() {
-    this.scrollToBottom();
+  componentDidUpdate(beforeProps) {
+    if (JSON.stringify(beforeProps.getChannelMessages) !== JSON.stringify(this.props.getChannelMessages)) {
+      this.scrollToBottom();
+    }
+
 
     // const messages = this.props.getChannelMessages; //TODO: this can be done more efficiently
     // if (messages.length > 0) {
@@ -52,16 +55,18 @@ class MessageList extends React.Component {
   }
 
   handleImageLoaded() {
-    if (this.messages.length > 0) {
-      const lastChatImageHtml = document.getElementById(
-          `chat_image_${this.messages[this.messages.length - 1].id}`
-        ); // Retrieves the id of the last message and returns the img tag if one exists
-      if (lastChatImageHtml && lastChatImageHtml.width > 0 && lastChatImageHtml.height > 0) {
-        this.setState({ finalImageStatus: "loaded" });
-      } else {
-        this.scrollToBottom();
-      }
-    }
+    this.scrollToBottom();
+
+    // if (this.messages.length > 0) {
+    //   const lastChatImageHtml = document.getElementById(
+    //       `chat_image_${this.messages[this.messages.length - 1].id}`
+    //     ); // Retrieves the id of the last message and returns the img tag if one exists
+    //   if (lastChatImageHtml && lastChatImageHtml.width > 0 && lastChatImageHtml.height > 0) {
+    //     this.setState({ finalImageStatus: "loaded" });
+    //   } else {
+    //     this.scrollToBottom();
+    //   }
+    // }
   }
 
   renderChatLog(source) {
