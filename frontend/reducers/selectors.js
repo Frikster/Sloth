@@ -3,7 +3,12 @@ export const getAllUsernames = ({entities}) => {
 };
 
 export const getChannelMessages = ({entities}, channelId) => {
-  return Object.values(entities.messages).filter(message => message.channel_id.toString() === channelId.toString());
+  const messages = Object.values(entities.messages).filter(message => message.channel_id.toString() === channelId.toString());
+  return messages.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(a.created_at) - new Date(b.created_at);
+  });
 };
 
 export const getJoinedChannels = ({session, entities}) => {

@@ -14,7 +14,8 @@ class MergeChannelsForm extends React.Component {
                 this.props.createMessage({
                   content: msg.content,
                   channel_id: res.payload.channel.id,
-                  image_url: msg.image_url
+                  image_url: msg.image_url,
+                  created_at: msg.created_at
                 });
                 // let file = open(msg.image_url); // https://stackoverflow.com/questions/2515931/how-can-i-download-a-file-from-a-url-and-save-it-in-rails/29743394#29743394
                 // debugger
