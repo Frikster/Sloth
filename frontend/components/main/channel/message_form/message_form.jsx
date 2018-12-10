@@ -62,18 +62,16 @@ class MessageForm extends React.Component {
   handleSendEvent(event) {
     event.preventDefault();
 
-    let formData = new FormData();
-    if (this.state.imageFile) {
-      formData.append("photo", this.state.imageFile);
+    if(this.state.currentChatMessage) {
+      this.chats.create(
+        // this.props.createMessage, TODO: How to add chat to state??
+        this.state.currentChatMessage,
+        this.props.currentUser.id,
+        this.props.channel.id);
+      this.setState({
+        currentChatMessage: ''
+      });
     }
-    this.chats.create(
-      // this.props.createMessage, TODO: How to add chat to state??
-      this.state.currentChatMessage,
-      this.props.currentUser.id,
-      this.props.channel.id);
-    this.setState({
-      currentChatMessage: ''
-    });
 
     if (this.state.imageFile) {
       let formData = new FormData();
@@ -92,7 +90,6 @@ class MessageForm extends React.Component {
       this.setState({ imageUrl: "", imageFile: null });
       document.getElementById("message-form-hidden-file-upload").value = null;
     }
-
   }
 
   handleChatInputKeyPress(event) {
