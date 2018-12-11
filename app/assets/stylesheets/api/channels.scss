@@ -10,6 +10,19 @@
   text-overflow: ellipsis;
 }
 
+#react-draggable::before {
+  content: "";
+}
+
+#react-draggable i {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fa-grip-vertical:hover {
+  cursor: -webkit-grabbing;
+}
+
 .public-channels-list li::before {
   content: "# ";
 }
@@ -17,6 +30,8 @@
 .private-channels-list li::before {
   content: "# ";
 }
+
+
 
 .channel-and-sidebar-div {
   // display: flex;

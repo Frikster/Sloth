@@ -123,10 +123,12 @@ class ChannelList extends React.Component {
           return (<li style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
 
         } else {
-          return <Draggable axis="y" onStop={this.handleStopDrag}>
-            <li style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}>
+          return <Draggable handle="i" axis="y" onStop={this.handleStopDrag}>
+              <li id="react-draggable" style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}>
                 {" "}
-                {channel.name}{" "}
+                <i class="fas fa-grip-vertical" />
+                {" "}
+                {/* <i class="fas fa-arrows-alt"></i> */} {channel.name}{" "}
               </li>
             </Draggable>;
         }
