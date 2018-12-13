@@ -79,7 +79,7 @@ class MessageList extends React.Component {
     if (source.length > 0 && Object.keys(source[source.length - 1]).length === 2 && Object.keys(source[source.length - 1])[0] === "image_url") {
       received_image_url = source[source.length - 1].image_url;
       source.pop();
-      if (source[source.length - 1].content != "" && !source[source.length - 1].image_url && !source[source.length - 1].content) {
+      if (source.length > 0 && source[source.length - 1].content != "" && !source[source.length - 1].image_url && !source[source.length - 1].content) {
         source[source.length - 1].image_url = received_image_url;
       }
     }
@@ -111,7 +111,7 @@ class MessageList extends React.Component {
         minute: "numeric",
         hour12: true
       });
-
+      debugger
       let first_message = userBlock[0].content;
       if (userBlock[0].content) {
         first_message = userBlock[0].content;

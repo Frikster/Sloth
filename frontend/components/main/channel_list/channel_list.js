@@ -149,7 +149,21 @@ class ChannelList extends React.Component {
       noCurrentUserName = noCurrentUserName.replace(/(^[,\s]+)|([,\s]+$)/g, ''); //remove trailing commas/whitespaces
       if (channel.id.toString() === this.props.match.params.channelId) {
         // return (<Draggable onStop={this.handleStopDrag}><li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li></Draggable>);
-        return (<li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
+        if (this.state.dropdownOpen) {
+          return (<li style={divStyle} key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
+        } else {
+          console.log(this.state.draggableChannelPosition);
+          return <Draggable axis="none" position={this.state.draggableChannelPosition} onDrag={this.onControlledDrag} handle="i" onStop={this.handleStopDrag}>
+            <li id="react-draggable" style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}>
+              {/* {" "} */}
+              <i class="fas fa-grip-vertical" />
+              {channel.name} {/* {" "} */}
+              {/* <i class="fas fa-arrows-alt"></i> */}
+            </li>
+          </Draggable>;
+        }
+
+
       }
       return (<li key={i} onClick={() => this.handleChannelClick(channel.name)}> {noCurrentUserName} </li>);
     }), this);
