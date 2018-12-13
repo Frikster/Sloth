@@ -111,7 +111,6 @@ class MessageList extends React.Component {
         minute: "numeric",
         hour12: true
       });
-      debugger
       let first_message = userBlock[0].content;
       if (userBlock[0].content) {
         first_message = userBlock[0].content;
