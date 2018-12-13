@@ -43,7 +43,7 @@ class MergeChannelsForm extends React.Component {
         this.props
           .createChannel({
             name: this.state.newChannelName,
-            direct_message_channel: this.state.mergedChannelIsPublic
+            direct_message_channel: !this.state.mergedChannelIsPublic
           })
           .then(res => {
             this.messages.forEach(msg => {
@@ -54,9 +54,10 @@ class MergeChannelsForm extends React.Component {
                 created_at: msg.created_at
               });
             });
+            this.props.closeModal();
+            this.props.history.push('/channels/' + res.payload.channel.id);
+            window.location.reload() //Please dear Code Gods I am under time constraints do not hurt me for doing this for now
           });
-
-        this.props.closeModal();
     }
 
     render() {
