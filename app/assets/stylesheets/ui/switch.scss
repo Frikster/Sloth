@@ -3,7 +3,7 @@
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 27px;
 }
 
 /* Hide default HTML checkbox */
@@ -30,8 +30,8 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 23px;
+  width: 23px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -60,4 +60,17 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.switch-div-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  height: 28px;
+}
+
+.switch-label { 
+  margin-left: 10px;
 }

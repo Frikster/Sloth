@@ -18,15 +18,24 @@ class MergeChannelsForm extends React.Component {
         this.draggedChannel.style.transform = "translate(0px, 0px)";
         this.state = {
             newChannelName: '',
-            directMessageChannel: false,
+            mergedChannelIsPublic: true,
         };
         this.handleMergeChannelsSubmit = this.handleMergeChannelsSubmit.bind(this);
     }
 
     update(field) {
-        return (e) => this.setState({
-            [field]: e.target.value
-        });
+        return (e) => {
+            this.setState({
+                [field]: e.target.value
+            });
+        }
+    };
+
+    updateCheckbox(field) {
+        return (e) => {
+            this.setState({
+            [field]: e.target.checked
+        }); }
     };
 
     handleMergeChannelsSubmit(e) {
@@ -34,7 +43,7 @@ class MergeChannelsForm extends React.Component {
         this.props
           .createChannel({
             name: this.state.newChannelName,
-            direct_message_channel: this.state.directMessageChannel
+            direct_message_channel: this.state.mergedChannelIsPublic
           })
           .then(res => {
             this.messages.forEach(msg => {
@@ -55,29 +64,38 @@ class MergeChannelsForm extends React.Component {
           this.props.closeModal();
           return <div />;
         } else {
-          return <div className="merge-channels-form-div">
-              <h1>Are you sure you wish to merge these channels?</h1>
-              <form onSubmit={this.handleMergeChannelsSubmit}>
-                <input className="merge-channels-new-channel-name-input" type="text" value={this.state.newChannelName} onChange={this.update("newChannelName")} placeholder="New Merged Channel Name" />
-                <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider round" />
-                </label>
-                Private Channel
-                {/* <div className='modal-checkbox-div'>
-                        <input type="checkbox" className="modal-checkbox" name="merge-private-channel-checkbox"
-                        onChange={this.update("newChannelName")}
-                                value={this.state.directMessageChannel} />  
-                        <label className="modal-checkbox-label" for="merge-private-channel-checkbox">
-                            New Merged Channel is Private
-                        </label>
-                  </div> */}
-                <input type="submit" value="GO" />
-              </form>
-              {/* <ul className='join-channel-form-publicChannel-ul'>
-                                {publicChannels}
-                            </ul> */}
-            </div>;
+            let checkboxLabel;
+            this.state.mergedChannelIsPublic ? (checkboxLabel = "New merged channel is public") : (checkboxLabel = "New merged channel is private");
+            return <div className="merge-channels-form-div">
+                <h1>
+                  Merge #{this.draggedChannel.innerText} with #{this.toMergeWithChannel.innerText}?
+                </h1>
+                <form onSubmit={this.handleMergeChannelsSubmit}>
+                  <input className="merge-channels-new-channel-name-input" type="text" value={this.state.newChannelName} onChange={this.update("newChannelName")} placeholder="New Merged Channel Name" />
+                  <div className="switch-div-container">
+                    <label class="switch">
+                      <input type="checkbox" onChange={this.updateCheckbox("mergedChannelIsPublic")} checked={this.state.mergedChannelIsPublic} />
+                      <span class="slider round" />
+                    </label>
+                    <span className="switch-label">
+                      {checkboxLabel}
+                    </span>
+                  </div>
+
+                  {/* <div className='modal-checkbox-div'>
+                            <input type="checkbox" className="modal-checkbox" name="merge-private-channel-checkbox"
+                            onChange={this.update("newChannelName")}
+                                    value={this.state.mergedChannelIsPublic} />  
+                            <label className="modal-checkbox-label" for="merge-private-channel-checkbox">
+                                New Merged Channel is Private
+                            </label>
+                    </div> */}
+                  <input type="submit" value="GO" />
+                </form>
+                {/* <ul className='join-channel-form-publicChannel-ul'>
+                                    {publicChannels}
+                                </ul> */}
+              </div>;
         }
     }
 }
