@@ -16,7 +16,8 @@ class ChannelList extends React.Component {
       creatingChannel: false,
       newChannelName: '',
       currentChannelId: '1',
-      dropdownOpen: false};
+      dropdownOpen: false,
+      draggableChannelPosition: {x: 0, y: 0 }};
     this.createNewChannel = this.createNewChannel.bind(this);
     this.handleCreateNewPublicChannelSubmit = this.handleCreateNewPublicChannelSubmit.bind(this);
     this.handleCreateNewPrivateChannelSubmit = this.handleCreateNewPrivateChannelSubmit.bind(this);
@@ -25,6 +26,7 @@ class ChannelList extends React.Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.onClickOut = this.onClickOut.bind(this);
     this.handleStopDrag = this.handleStopDrag.bind(this);
+    this.onControlledDrag = this.onControlledDrag.bind(this);
   }
 
   componentDidMount() {
@@ -106,9 +108,15 @@ class ChannelList extends React.Component {
     this.setState({dropdownOpen: false});
   }
 
+  onControlledDrag(e, position) {
+    const y = position.y;
+    this.setState({ draggableChannelPosition: {x: 0, y } });
+    console.log(this.state.draggableChannelPosition)
+  }
+
   handleStopDrag(e) {
-    // debugger
     this.props.openModal("merge_channels");
+    this.setState({draggableChannelPosition: {x: 0, y: 0}});
   }
 
   render() {
@@ -116,19 +124,18 @@ class ChannelList extends React.Component {
     const divStyle = {
       backgroundColor: 'rgb(76, 150, 137)'
     };
-
     const publicChannelNames = this.props.channels.filter(((channel) => !channel.direct_message_channel), this).map(((channel, i) => {
       if (channel.id.toString() === this.props.match.params.channelId) {
         if (this.state.dropdownOpen){
           return (<li style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}> {channel.name} </li>);
-
         } else {
-          return <Draggable handle="i" axis="y" onStop={this.handleStopDrag}>
+          console.log(this.state.draggableChannelPosition);
+          return <Draggable axis="none" position={this.state.draggableChannelPosition} onDrag={this.onControlledDrag} handle="i" onStop={this.handleStopDrag}>
               <li id="react-draggable" style={divStyle} key={`channel_${channel.id}`} onClick={() => this.handleChannelClick(channel.name)}>
                 {/* {" "} */}
-              <i class="fas fa-grip-vertical" />{channel.name}{" "}
-                {/* {" "} */}
-                {/* <i class="fas fa-arrows-alt"></i> */} 
+                <i class="fas fa-grip-vertical" />
+                {channel.name} {/* {" "} */}
+                {/* <i class="fas fa-arrows-alt"></i> */}
               </li>
             </Draggable>;
         }

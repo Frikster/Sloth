@@ -8,62 +8,19 @@ class MergeChannelsForm extends React.Component {
         this.props.fetchMessages();
         this.props.fetchChannels();
         this.props.fetchUserChannels();
-        this.messages = this.props.getMergedMessages(this.draggedChannel.innerText, this.toMergeWithChannel.innerText);
-        this.props.createChannel({ name: `Test${(1 + Math.random()) * 0x10000}`, direct_message_channel: false }).then((res) => {
-            this.messages.forEach(msg => {
-                this.props.createMessage({
-                  content: msg.content,
-                  channel_id: res.payload.channel.id,
-                  image_url: msg.image_url,
-                  created_at: msg.created_at
-                });
-                // let file = open(msg.image_url); // https://stackoverflow.com/questions/2515931/how-can-i-download-a-file-from-a-url-and-save-it-in-rails/29743394#29743394
-                // debugger
-                // if(file) {
-                //     this.props.createMessage({
-                //     content: msg.content,
-                //     channel_id: res.payload.channel.id,
-                //     photo: file.read
-                //     });
-                // } else {
-                //     this.props.createMessage({
-                //         content: msg.content,
-                //         channel_id: res.payload.channel.id,
-                //     });
-                // }
-            });
-        });
     }
 
     constructor(props) {
         super(props);
         this.draggedChannel = document.getElementsByClassName("react-draggable-dragged")[0];
         this.draggedChannelY = this.draggedChannel.getBoundingClientRect().y;
+        this.draggedChannel.style.webkitTransform = "translate(0px, 0px)"
         this.draggedChannel.style.transform = "translate(0px, 0px)";
-
-        // debugger
-        // debugger
-        // const toMergeWithChannel = document.elementFromPoint(0, draggedChannelY);
-
-
-        // Parse text to get transform
-        // const rx = /,\s(.*)\)/;
-        // const yTransform = rx.exec(draggedChannel.style.transform)[1];
-        // // Move channel back to reveal channel underneath (I am well aware how much cheese is in this code)
-        // debugger
-        // draggedChannel.style.position = "relative";
-        // draggedChannel.style.bottom = yTransform;
-
-
-        // setTimeout(function (self) {
-        //     self.toMergeWithChannel = document.elementFromPoint(0, draggedChannelY);
-        //  }, 0, this);
-
-        // this.state = {
-        //     publicChannels: this.props.getAllPublicChannels
-        // };
-        // this.filterChannelList = this.filterChannelList.bind(this);
-        // this.joinChannel = this.joinChannel.bind(this);
+        this.state = {
+            newChannelName: '',
+            directMessageChannel: false,
+        };
+        this.handleMergeChannelsSubmit = this.handleMergeChannelsSubmit.bind(this);
     }
 
     update(field) {
@@ -72,52 +29,55 @@ class MergeChannelsForm extends React.Component {
         });
     };
 
-    // joinChannel(publicChannel) {
-    //     return (e) => {
-    //         const joinedChannelIds = this.props.getJoinedChannels.map(channel => channel.id)
-    //         if (!joinedChannelIds.includes(publicChannel.id)) {
-    //             this.props.processForm({ channel_id: publicChannel.id, user_id: this.props.currentUser.id })
-    //         }
-    //         this.props.history.push('/channels/' + publicChannel.id);
-    //         this.props.closeModal();
-    //     };
-    // }
+    handleMergeChannelsSubmit(e) {
+        this.messages = this.props.getMergedMessages(this.draggedChannel.innerText, this.toMergeWithChannel.innerText);
+        this.props
+          .createChannel({
+            name: this.state.newChannelName,
+            direct_message_channel: this.state.directMessageChannel
+          })
+          .then(res => {
+            this.messages.forEach(msg => {
+              this.props.createMessage({
+                content: msg.content,
+                channel_id: res.payload.channel.id,
+                image_url: msg.image_url,
+                created_at: msg.created_at
+              });
+            });
+          });
 
-    // filterChannelList(e) {
-    //     const input = e.target.value;
-    //     this.setState({
-    //         publicChannels: this.props.getAllPublicChannels.filter(channel => channel.name.includes(input))
-    //     });
-    // };
+        this.props.closeModal();
+    }
 
     render() {
-        // const publicChannels = this.state.publicChannels.map(publicChannel => {
-        //     return (<div onClick={this.joinChannel(publicChannel).bind(this)}><div className='profile-pic-small'
-        //     // src='https://lh3.googleusercontent.com/7_oM7ibjp1PjE402kQH7lxQmWuG2yIS0UsUAqgMMMmxNLXBq3TBOExoEjtbDJvMzC-zYCexs-PmSDO3z_mJkKp3Vww1Yny7fu1sGgjQOUDUttxtOyjXkPplmbFI2OonypQSIQetgDwmWpZBWRKq2VZpSPk5VjwixJXnBDsHLWXHGMslp3_VmujDwHnxwObmVAZKDMnwSKf5-dP_Hp8yMfN9grV_mvRC059wacl6iQGVWPinFNBCzICKk7fAOHE7gSb4eHie2alaFMhD8M0RtjWARA3KzBpp66SdlzK-855UiN8ion9o5zIfGizgnzP3C_pzYkNFtn3-D1nqZaQKPIg2v9O4-j7iYI8qH5e69dRiKPZidIRrbf6URSdQLPF0egcnr_jDsCECi7bY3a2IS3YA3NcMqQKogxyMWSa0Bedn_8_DRCD2AgHaCTAhmh1QRRK0nAKrswx1YWgozdGMPuxdFS9UnbBPVh5fGtURFY_evyvcBEzVD8QNMg3rVvw3RiiJsf0Gy0k7QpEq-iRX_Na4VaRC-OYnf9pbOhwp0Ndou7Z3jBFaTirqkOgxFQe51JD0tP8zHSpveqtd5VVkWkCcXZQS4ulpNiEqOBWC-pF4Ed2Sg1U_sMjNbpJbkOFl7=s892-no'
-        //     // alt='SlackSloth'
-        //     />
-        //         <li key={`public_channel_${publicChannel.id}`}>{publicChannel.name}</li>
-        //     </div>);
-        // });
-
-
-        if(false) {
-            this.props.closeModal();
-            return <div></div>
-        }
-        else {
-            return (
-                    <div className='merge-channels-form-div'>
-                        <h1>Are you sure you wish to merge these channels?</h1>
-                        <input
-                            className='merge-channels-new-channel-name-input'
-                            type='text'
-                            placeholder='Merged Channel Name' />
-                        {/* <ul className='join-channel-form-publicChannel-ul'>
+        if (this.toMergeWithChannel.classList[0] === "react-draggable" || this.toMergeWithChannel.nodeName.toLowerCase() !== "li") {
+          this.props.closeModal();
+          return <div />;
+        } else {
+          return <div className="merge-channels-form-div">
+              <h1>Are you sure you wish to merge these channels?</h1>
+              <form onSubmit={this.handleMergeChannelsSubmit}>
+                <input className="merge-channels-new-channel-name-input" type="text" value={this.state.newChannelName} onChange={this.update("newChannelName")} placeholder="New Merged Channel Name" />
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round" />
+                </label>
+                Private Channel
+                {/* <div className='modal-checkbox-div'>
+                        <input type="checkbox" className="modal-checkbox" name="merge-private-channel-checkbox"
+                        onChange={this.update("newChannelName")}
+                                value={this.state.directMessageChannel} />  
+                        <label className="modal-checkbox-label" for="merge-private-channel-checkbox">
+                            New Merged Channel is Private
+                        </label>
+                  </div> */}
+                <input type="submit" value="GO" />
+              </form>
+              {/* <ul className='join-channel-form-publicChannel-ul'>
                                 {publicChannels}
                             </ul> */}
-                    </div>
-                );
+            </div>;
         }
     }
 }

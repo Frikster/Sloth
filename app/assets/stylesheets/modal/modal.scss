@@ -22,7 +22,7 @@
 
 // }
 
-.private-channel-name-input, .private-channel-user-input, .public-channel-form-div input[type='text'], .public-channel-search-input {
+.private-channel-name-input, .private-channel-user-input, .public-channel-form-div input[type='text'], .public-channel-search-input, .merge-channels-new-channel-name-input {
   font-size: 20px;
   padding: 15px;
   margin: 5px;
@@ -32,7 +32,24 @@
   box-sizing: border-box;
 }
 
-.private-channel-name-input-label {
+.modal-checkbox-div label {
+  display: block;
+    padding-left: 15px;
+  text-indent: -15px;
+}
+
+.modal-checkbox-div input {
+    /* width: 13px; */
+    /* height: 13px; */
+    /* padding: 0; */
+    margin: 0;
+    /* margin-right: 0; */
+    /* vertical-align: middle; */
+    position: relative;
+    top: 10px;
+}
+
+.private-channel-name-input-label, .modal-checkbox-label  {
   margin-left: 10px;
   font-weight: bold;
 }
@@ -43,7 +60,7 @@
   margin-bottom: 20px;
 }
 
-.private-channel-user-input-div input[type='submit'], .public-channel-form-div input[type='submit'] {
+.private-channel-user-input-div input[type='submit'], .public-channel-form-div input[type='submit'], .merge-channels-form-div input[type='submit']{
   border: none;
   font-size: 20px;
   padding: 15px;
