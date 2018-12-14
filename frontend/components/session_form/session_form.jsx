@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
   handleDemoLogin(e) {
     const emailInput = document.getElementById('session-form-email-input');
     const passwordInput = document.getElementById('session-form-password-input');
-    let email = 'andyiscoming@example.com'.split('');
+    let email = 'recruiter@awesomecompany.com'.split('');
     let password = '123456'.split('');
     let that = this;
 

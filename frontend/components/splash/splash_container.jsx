@@ -11,7 +11,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    demo: () => dispatch(login({email: 'andyiscoming@example.com', password: '123456'}))
+    demo: () => dispatch(login({ email: 'recruiter@awesomecompany.com', password: '123456'}))
   };
 };
 

@@ -12,7 +12,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     processForm: (user) => signup(user)(dispatch),
-    demo: () => dispatch(login({email: 'andyiscoming@example.com', password: '123456'})),
+    demo: () => dispatch(login({ email: 'recruiter@awesomecompany.com', password: '123456'})),
     updateErrors: (errors) => dispatch(updateErrors(errors))
   };
 };
