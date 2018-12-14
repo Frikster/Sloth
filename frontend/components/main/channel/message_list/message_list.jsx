@@ -6,13 +6,16 @@ import { withRouter } from 'react-router-dom';
 class MessageList extends React.Component {
   componentDidMount() {
     this.props.fetchMessages();
-    this.props.fetchUsers();
     this.scrollToBottom();
     // const messages = this.props.getChannelMessages; //TODO: this can be done more efficiently
     // if (messages.length > 0 && messages[messages.length - 1].image_url) {
     //   this.lastElIsImage = true;
     // }
     // this.scrollToBottom();
+  }
+
+  componentWillMount() {
+    this.props.fetchUsers();
   }
 
   componentDidUpdate(beforeProps) {
@@ -102,7 +105,7 @@ class MessageList extends React.Component {
     if (userBlockArr.length > 0) {
       userBlockArrs.push(userBlockArr);
     }
-    // if (userBlockArrs.length > 0) {debugger;}
+
     let res = userBlockArrs.map(userBlock => {
       const author_id = this.props.users[userBlock[0].author_id].username;
       const profile_pic_url = this.props.users[userBlock[0].author_id].profile_pic_url;
