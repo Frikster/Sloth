@@ -12,7 +12,7 @@ ChatMessage.destroy_all
 
 general = Channel.create!(name: 'General', direct_message_channel: false)
 
-andy = User.create!(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456')
+andy = User.create!(email: 'andyiscoming@example.com', username: 'Andy Wynkoop', password: '123456', profile_pic_url: 'https://media.giphy.com/media/3oEdv8NIigSRpCZZmw/giphy.gif')
 andy_direct = Channel.create!(name: andy.username, direct_message_channel: true, author_id: andy.id)
 UserChannel.create!(user_id: andy.id, channel_id: andy_direct.id)
 UserChannel.create!(user_id: andy.id, channel_id: general.id)

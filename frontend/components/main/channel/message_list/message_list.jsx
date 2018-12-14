@@ -105,6 +105,7 @@ class MessageList extends React.Component {
     // if (userBlockArrs.length > 0) {debugger;}
     let res = userBlockArrs.map(userBlock => {
       const author_id = this.props.users[userBlock[0].author_id].username;
+      const profile_pic_url = this.props.users[userBlock[0].author_id].profile_pic_url;
       let created_at = new Date(userBlock[0].created_at);
       created_at = created_at.toLocaleString("en-US", {
         hour: "numeric",
@@ -133,10 +134,19 @@ class MessageList extends React.Component {
           </div>
         );
       });
-
       return (
         <section key={`section_${userBlock[0].id}`} className="chat-section">
           <div className="chat-message-header">
+
+            { profile_pic_url ? 
+            <img
+              className="profile-pic-big"
+              src={profile_pic_url}
+              alt="SlackSloth"
+              height="44"
+              width="44"
+            />
+              : 
             <div
               className="profile-pic-big"
               // src="https://lh3.googleusercontent.com/7_oM7ibjp1PjE402kQH7lxQmWuG2yIS0UsUAqgMMMmxNLXBq3TBOExoEjtbDJvMzC-zYCexs-PmSDO3z_mJkKp3Vww1Yny7fu1sGgjQOUDUttxtOyjXkPplmbFI2OonypQSIQetgDwmWpZBWRKq2VZpSPk5VjwixJXnBDsHLWXHGMslp3_VmujDwHnxwObmVAZKDMnwSKf5-dP_Hp8yMfN9grV_mvRC059wacl6iQGVWPinFNBCzICKk7fAOHE7gSb4eHie2alaFMhD8M0RtjWARA3KzBpp66SdlzK-855UiN8ion9o5zIfGizgnzP3C_pzYkNFtn3-D1nqZaQKPIg2v9O4-j7iYI8qH5e69dRiKPZidIRrbf6URSdQLPF0egcnr_jDsCECi7bY3a2IS3YA3NcMqQKogxyMWSa0Bedn_8_DRCD2AgHaCTAhmh1QRRK0nAKrswx1YWgozdGMPuxdFS9UnbBPVh5fGtURFY_evyvcBEzVD8QNMg3rVvw3RiiJsf0Gy0k7QpEq-iRX_Na4VaRC-OYnf9pbOhwp0Ndou7Z3jBFaTirqkOgxFQe51JD0tP8zHSpveqtd5VVkWkCcXZQS4ulpNiEqOBWC-pF4Ed2Sg1U_sMjNbpJbkOFl7=s892-no"
@@ -144,6 +154,8 @@ class MessageList extends React.Component {
               // height="44"
               // width="44"
             />
+
+            }
             <div className="chat-message-header-text-div">
               <div className="chat-author-and-created-at-container">
                 <span className="chat-author">{author_id}</span>
