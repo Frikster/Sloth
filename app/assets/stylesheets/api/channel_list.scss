@@ -1,0 +1,15 @@
+.channel-list-container-all-channels {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+/* Handle */
+.channel-list-container-all-channels::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: lightgray;  
+}
+
+/* Handle on hover */
+.channel-list-container-all-channels::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+}

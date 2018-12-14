@@ -226,39 +226,39 @@ class ChannelList extends React.Component {
     //   );
     // };
 
-    return (
-      <div className='channel-list-container'>
-        <div className='channel-list-container-header' onClick={this.showDropdown}>
+    return <div className="channel-list-container">
+        <div className="channel-list-container-header" onClick={this.showDropdown}>
           <h3>App Academy</h3>
-          <ul className='channel-header-username'>
+          <ul className="channel-header-username">
             <li>{this.props.currentUser.username}</li>
           </ul>
-            {dropdown}
+          {dropdown}
         </div>
 
+      <div className='channel-list-container-all-channels'>
+          <div className="public-channels-list">
+            <span className="channel-list-plus-circle">
+              <p onClick={() => this.props.openModal("join_channel")}>
+                Public Channels
+              </p>
+              <i onClick={() => this.props.openModal("new_public_channel")} className="fas fa-plus-circle" />
+            </span>
+            <ul>{publicChannelNames}</ul>
+          </div>
 
-        <div className='public-channels-list'>
-          <span className='channel-list-plus-circle'>
-            <p onClick={() => this.props.openModal('join_channel')}>Public Channels</p>
-            <i onClick={() => this.props.openModal('new_public_channel')} className='fas fa-plus-circle'></i>
-          </span>
-          <ul>
-            {publicChannelNames}
-          </ul>
+          <div className="private-channels-list">
+            <span className="channel-list-plus-circle">
+              <p
+                onClick={() => this.props.openModal("new_private_channel")}
+              >
+                Private Channels
+              </p>
+              <i onClick={() => this.props.openModal("new_private_channel")} className="fas fa-plus-circle" />
+            </span>
+            <ul>{privateChannelNames}</ul>
+          </div>
         </div>
-
-        <div className='private-channels-list'>
-          <span className='channel-list-plus-circle'>
-            <p onClick={() => this.props.openModal('new_private_channel')}>Private Channels</p>
-            <i onClick={() => this.props.openModal('new_private_channel')} className='fas fa-plus-circle'></i>
-          </span>
-          <ul>
-            {privateChannelNames}
-          </ul>
-        </div>
-
-      </div>
-    );
+      </div>;
   }
 }
 
