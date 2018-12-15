@@ -100,6 +100,7 @@ class PrivateChannelForm extends React.Component {
     const privateChannels = this.state.filteredPrivateChannels.map((privateChannel,i) => {
       const channelUsers = this.props.getJoinedUsers(privateChannel.id);
       const channelAuthor = channelUsers.filter(user => user.id === privateChannel.author_id)[0];
+      debugger
       return (<div onClick={this.addUsersFromChannel(privateChannel)}> 
               {channelAuthor && channelAuthor.profile_pic_url ?
                 <img className="profile-pic-small" src={channelAuthor.profile_pic_url} />

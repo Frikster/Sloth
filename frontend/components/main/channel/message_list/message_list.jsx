@@ -107,7 +107,7 @@ class MessageList extends React.Component {
     }
 
     let res = userBlockArrs.map(userBlock => {
-      const author_id = this.props.users[userBlock[0].author_id].username;
+      const author_username = this.props.users[userBlock[0].author_id].username;
       const profile_pic_url = this.props.users[userBlock[0].author_id].profile_pic_url;
       let created_at = new Date(userBlock[0].created_at);
       created_at = created_at.toLocaleString("en-US", {
@@ -161,7 +161,7 @@ class MessageList extends React.Component {
             }
             <div className="chat-message-header-text-div">
               <div className="chat-author-and-created-at-container">
-                <span className="chat-author">{author_id}</span>
+                <span className="chat-author">{author_username}</span>
                 <span className="chat-created-at">{created_at}</span>
               </div>
               <div className="chat-message-first">{first_message}</div>

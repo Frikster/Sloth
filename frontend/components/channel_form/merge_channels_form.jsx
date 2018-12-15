@@ -50,13 +50,14 @@ class MergeChannelsForm extends React.Component {
               this.props.createMessage({
                 content: msg.content,
                 channel_id: res.payload.channel.id,
+                author_id: msg.author_id,
                 image_url: msg.image_url,
                 created_at: msg.created_at
               });
             });
             this.props.closeModal();
             this.props.history.push('/channels/' + res.payload.channel.id);
-            window.location.reload() //Please dear Code Gods I am under time constraints do not hurt me for doing this for now
+            window.location.reload() //Please dear Code Gods I am under time constraints do not hurt me for doing this 
           });
     }
 

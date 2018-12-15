@@ -48,8 +48,8 @@ class SessionForm extends React.Component {
       that.setState({
         email: emailInput.value, password: passwordInput.value
       });
-      typeOut = setTimeout(tick, 50);
-    }, 50);
+      typeOut = setTimeout(tick, 100);
+    }, 100);
 
   }
 

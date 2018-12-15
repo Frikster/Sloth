@@ -9,7 +9,9 @@ class Api::MessagesController < ApplicationController
 
   def create
     @message = ChatMessage.new(message_params)
-    @message.author_id = current_user.id
+    if !@message.author_id
+      @message.author_id = current_user.id
+    end
     if @message.photo.attached?
       @message.image_url = url_for(@message.photo)
     end
@@ -33,6 +35,6 @@ class Api::MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:content, :channel_id, :photo, :image_url, :created_at)
+    params.require(:message).permit(:content, :channel_id, :photo, :image_url, :created_at, :author_id)
   end
 end
