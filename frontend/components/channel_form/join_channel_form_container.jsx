@@ -4,7 +4,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import JoinChannelForm from './join_channel_form';
 import {fetchChannels} from '../../actions/channel_actions';
 import {createUserChannel, fetchUserChannels} from '../../actions/userChannel_actions';;
-import {getAllPublicChannels, getJoinedChannels} from '../../reducers/selectors';
+import { getAllPublicChannels, getJoinedChannels, getJoinedUsers} from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     formType: 'join_channel',
     currentUser: state.entities.users[state.session.id],
     getAllPublicChannels: getAllPublicChannels(state),
-    getJoinedChannels: getJoinedChannels(state)
+    getJoinedChannels: getJoinedChannels(state),
+    getJoinedUsers: (channelId) => getJoinedUsers(state, channelId)
   };
 };
 
