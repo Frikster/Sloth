@@ -124,7 +124,7 @@ realTimeMsg.photo.attach(io: File.open(Rails.root.join('app/assets/images/RealTi
 realTimeMsg.save!
 
 ChatMessage.create!(content: 'Hi there! Welcome to my site!', author_id: dirk.id, channel_id: general.id)
-ChatMessage.create!(content: 'To check out the live chat and live image sharing in action consider opening a new incognito tab and login with recruiter@awesomecompanycompetition.com, password: 123456', author_id: dirk.id, channel_id: general.id)
+ChatMessage.create!(content: 'To check out the live chat and live image sharing in action open a new incognito tab and log in with recruiter@awesomecompanycompetition.com, password: 123456', author_id: dirk.id, channel_id: general.id)
 ChatMessage.create!(content: 'Have fun pretending to talk to a Sloth version of your competition (⊙ω⊙)', author_id: dirk.id, channel_id: general.id)
 ChatMessage.create!(content: 'Sloth utilizes ActionCable\'s underlying websockets to establish two-way communication between server and client chat, allowing for both the site\'s live chat and live image sharing.', author_id: dirk.id, channel_id: general.id)
 ChatMessage.create!(content: 'You will also notice the usual suspects of creating and joining channels (public or private) are fully functional. Note however that I decided not to differentiate between "direct message channels" and "private channels". If you think about it they are functionally equivalent and as a daily Slack user differentiating direct message channels from private channels means I can have a private channel hidden among a whole list of public channels. This irks me so... I changed it :P', author_id: dirk.id, channel_id: general.id)
@@ -134,7 +134,7 @@ ChatMessage.create!(content: 'You will also notice the usual suspects of creatin
 # joincreateprivateMsg.save!
 
 ChatMessage.create!(content: 'And finally a little hidden feature. I always wished you could easily merge channels in Slack so here I\'ve implemented it! (⊙ω⊙)', author_id: dirk.id, channel_id: general.id)
-ChatMessage.create!(content: 'Use the drag icon on a selected channel and drag it to overlap with the channel you want to merge with. See the gif below. Protip: open it in a new tab.', author_id: dirk.id, channel_id: general.id)
+ChatMessage.create!(content: 'Use the drag icon on a selected channel and drag it to overlap with the channel you want to merge with. Protip: open the gif below in a new tab to see how it\'s done.', author_id: dirk.id, channel_id: general.id)
 
 mergeMsg = ChatMessage.new(author_id: dirk.id, channel_id: general.id, image_url: 'https://s3-us-west-1.amazonaws.com/app-academy-sloth-seed/MergeShowcase.gif')
 mergeMsg.photo.attach(io: File.open(Rails.root.join('app/assets/images/MergeShowcase.gif')), filename: 'MergeShowcase.gif', content_type: 'image/gif')
