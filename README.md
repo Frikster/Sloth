@@ -4,6 +4,9 @@
 ### Notable Features 
 
 1. Live Chat using ActionCable websockets
+
+![](app/assets/images/RealTimeMessagingShowcase.gif)
+
 2. Private Channels with protected routes and a search bar for adding users to private channels. These are functionally identical to direct messaging/group messaging. The search updates users in real-time and channels are given default names if none is provided.
 
 ### Coming Soon
