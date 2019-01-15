@@ -131,7 +131,7 @@ The hardest part was - to my surprise - handling the drag-and-drop behaviour of 
 ## Future Plans
 
 1. Workspaces (i.e. an individual's repository of knowledge)
-2. Workspace merging (i.e. when you meet someone cool and want to collaborate and selectively share particular notes and chat on particular topics)
+2. Workspace merging (i.e. when you meet someone interesting who has their own workspace and you want to collaborate and selectively share particular notes and chat on particular topics you would Merge Workspaces)
 3. Workspace unmerging 
 4. Channel unmerging
 5. Message/Channel/Workspace deletion
