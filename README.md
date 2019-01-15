@@ -56,7 +56,7 @@ Sloth utilizes [ActionCable](https://guides.rubyonrails.org/action_cable_overvie
   }
 ```
 
-* Our rails ChatMessage controller will recieve the data sent to the open connection. ActionCable will then update the client instantly once the controller completes creating a new message. To upload to our S3 bucket we encapsulate our image file in a formData object and process it via an ajax request.
+* Our rails ChatMessage controller will recieve the data sent to the open connection. ActionCable will then update the client instantly once the controller completes creating a new message. To upload to our S3 bucket we encapsulate our image file in a formData object and process it via an ajax request. As soon as the client receives the newly created image url the message_list component re-renders and scrolls the new image into view.
 
 ```javascript
   handleSendEvent(event) {
