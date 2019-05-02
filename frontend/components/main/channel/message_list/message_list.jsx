@@ -5,17 +5,14 @@ import { withRouter } from 'react-router-dom';
 
 class MessageList extends React.Component {
   componentDidMount() {
-    this.props.fetchMessages();
+    this.props.fetchUsers();
+    this.props.fetchMessages(); // api/channels/:channelId/messages
     this.scrollToBottom();
     // const messages = this.props.getChannelMessages; //TODO: this can be done more efficiently
     // if (messages.length > 0 && messages[messages.length - 1].image_url) {
     //   this.lastElIsImage = true;
     // }
     // this.scrollToBottom();
-  }
-
-  componentWillMount() {
-    this.props.fetchUsers();
   }
 
   componentDidUpdate(beforeProps) {
